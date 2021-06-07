@@ -1,0 +1,36 @@
+{
+
+  "compileOnSave": false,
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "downlevelIteration": true,
+    "module": "esnext",
+    "outDir": "./dist",
+    "sourceMap": false,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "strict": false,
+    "target": "es2015",
+    "rootDir": "src",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "es2015",
+      "dom"
+    ]
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+    "cli",
+    "**/*.js"
+  ]
+}

@@ -22,23 +22,33 @@ export class Photographer {
     }
 
     public profileSummary() {
+       return  `
+    <div class="components">
+         <div>
+            <a class="profile__header" aria-label="visit profile" href="build/profilePage.html?id=${this.id}">
+              <img class="profile__header__profilepicture profile-rounded" title="${this.name}"  src="/assets/images/ProfilePicture/${this.portrait}" alt="">
+              <h2 class="profile__header__name">${this.name}</h2>
+            </a>
+        </div>
+      <div class="profile__description">
+        <p class="profile__description__city"><span class="location">${this.city}, ${this.country}</span></p>
+        <p class="profile__description__quote">${this.tagLine}</p>
+        <p class="profile__description__rate"><span class="rate">${this.price}€/jour</span></p>
+      </div>
+      <div >
+        <ul id="${this.id}" class="profile__hashtag">
+        ${this.tagsList()}
+        </ul>
+      </div>
+    </div>
         `
-        <div >
-    <a class="profile__header" aria-label="visit profile" href="build/profilePage.html?id=${this.id}">
-      <img class="profile__header__profilepicture profile-rounded" title="${this.name}"  src="/dist/images/ProfilePicture/${this.portrait}" alt="">
-      <h2 class="profile__header__name">${this.name}</h2>
-    </a>
-  </div>
-  <div class="profile__description">
-    <p class="profile__description__city"><span class="location">${this.city}, ${this.country}</span></p>
-    <p class="profile__description__quote">${this.tagLine}</p>
-    <p class="profile__description__rate"><span class="rate">${this.price}€/jour</span></p>
-  </div>
-  <div >
-    <ul id="${this.id}" class="profile__hashtag">
-    </ul>
-  </div>
-        `
+    }
+
+    private tagsList() {
+        const tagsHTML = [];
+        this.tags.forEach( tag => { tagsHTML.push(`<li><button class="hashtag" title="${tag}" onclick="console.log('filter tag')">#${tag}</button></li>`);
+        })
+        return tagsHTML.join('')
     }
 
 }

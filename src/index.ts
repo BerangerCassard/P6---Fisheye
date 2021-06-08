@@ -16,21 +16,8 @@ photographerA.medias.push(mediaA);
 
 const dataFile = "./assets/data/photographers.json";
 
-fetch(dataFile,
-    {
-        headers : {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }})
-    .then( (res: any) => {
-        try{
-            const data = res.json;
-            console.log('response data ?', data)
-        } catch (e){
-            console.log('error happened here!')
-            console.error(e)
-        }
-    } )
+fetch(dataFile)
+    .then( (res: any) => res.json())
     .then( (json: any) => {
 
             let allPhotographersInstances: Photographer[] = [];

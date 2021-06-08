@@ -1,0 +1,50 @@
+// header home 
+
+.header-home {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  width: 95%;
+  // margin-top: 5px;
+
+  & > a {
+    position: absolute;
+    height: 50px;
+    width: 206px;
+  }
+
+  &__logo {
+    width: 200px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    width: 55%;
+
+    & ul {
+      display: flex;
+      gap: 1%;
+      width: 100%;
+      flex-wrap: wrap;
+        
+      & li {
+        margin: 4px 0;
+      }
+    }
+  }
+}
+
+.header-profile {
+  padding: 26px 0;
+
+  & > a {
+    position: absolute;
+    height: 50px;
+    width: 206px;
+  }
+
+  &__logo {
+    width: 200px;
+  }
+}

@@ -1,0 +1,55 @@
+.main {
+  margin: 25px auto;
+  
+  &__title {
+    position: relative;
+    left: 77%;
+    top: 4px;
+    margin-top: 22px;
+  }
+
+  &__section {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+
+  }
+}
+
+.profile {
+  text-align: center;
+  flex-basis: 33%;
+  margin: 30px 0;
+
+  &__header {
+
+    &__profilepicture {
+      box-shadow: -9px 10px 45px -5px rgba(82,82,82,0.64);
+    }
+
+    &__name {
+      margin-top: 17px;
+    }
+  }
+
+  &__description {
+
+    &__city {
+      font-size: 13px;
+    }
+  }
+
+  &__hashtag {
+    display: flex;
+    gap: 1%;
+    padding-left: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    & li {
+      margin: 5px 0;
+    }
+  }
+}

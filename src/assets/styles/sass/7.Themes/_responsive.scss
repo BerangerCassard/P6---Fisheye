@@ -1,0 +1,316 @@
+//  responsvie for home
+
+@media screen and (max-width: 1450px) {
+.bloc {
+  width: 95%;
+}
+
+.header-home {
+  flex-direction: column;
+
+  &__nav {
+    width: 100%;
+    margin-top: 25px;
+
+    & ul {
+      padding-left: 0; 
+      margin: auto;
+      width: 70%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.main {
+    
+  &__title {
+    position: initial;
+    text-align: right;
+    margin-top: 0;
+    }
+
+  &__section {
+    margin-top: 120px;
+  }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+.main {
+
+  &__title {
+    font-size: 14px;
+  }
+  
+  &__section {
+    margin: 35px auto;
+    margin-top: 86px;
+
+    &__line {
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
+    }
+  }
+}
+
+.main {
+  
+  &__section {
+    margin-top: 97px;
+  }
+}
+
+.profile {
+  margin: 30px auto; 
+  width : 100%;
+}
+}
+
+@media screen and (max-width: 567px) {
+.main {
+
+  &__section {
+    margin-top: 133px;
+  }
+}
+}
+
+@media screen and (max-width: 425px) {
+.header-home {
+
+  &__nav {
+
+    & ul {
+      width: 80%;
+    }
+  }
+}
+}
+
+@media screen and (max-width: 363px) {
+.header-home {
+
+  &__logo {
+    width: 130px;
+  }
+}
+
+.main{
+
+  &__section {
+    margin-top: 184px;
+  }
+}
+}
+
+// responsive for photographer page
+
+@media screen and (max-width: 1300px) {
+.publication {
+
+  &__description {
+
+    &__title {
+      font-size: 0.9rem;
+    }
+
+    &__infos {
+      
+      & p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+}
+
+@media screen and (max-width: 930px) {
+.body-profile {
+
+  &__resume {
+    background-color: white;
+
+    &__info {
+      flex-basis: 70%;
+
+      & #profile-location {
+        line-height: 15px;
+      }
+
+      &__name {
+
+        & #profile-header {
+          line-height: 60px;
+        }
+
+        & button {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__content {
+
+    &__order {
+      display: none;
+    }
+
+    &__pictures {
+
+      &__line {
+        flex-direction: column;
+      }
+    }
+  }
+
+  &__essential {
+    display: none;
+  }
+
+  &__contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 3%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: 35px;
+  }
+}
+
+.publication {
+  margin: 10px auto;
+}
+
+.profile-rounded {
+  height: 150px;
+  width: 150px;
+}
+}
+
+@media screen and (max-width: 930px) {
+.body-profile {
+
+  & .header-profile {
+    padding : 26px 0 0 0;
+  }
+
+  &__resume {
+    padding: 0;
+    align-items: center;
+
+    &__info {
+
+        & #profile-location {
+          font-size: 13px;
+          line-height: 17px;
+          margin: 0;
+        }
+
+        & #profile-quote {
+          font-size: 13px;
+          line-height: 17px;
+          margin: 6px 0;
+        }
+    
+    &__hashtag {
+      font-size: 13px;
+      line-height: 17px;
+
+      & ul {
+        flex-wrap: wrap;
+      }
+    }
+
+      &__name {
+
+        & #profile-header {
+          font-size: 36px;
+          line-height: 47px;
+        }
+
+
+      }
+    }
+  }
+
+  &__content {
+    margin: 0;
+
+    &__pictures {
+      margin: 0;
+    }
+  }
+
+  & .modal__content {
+    width: 80%;
+
+    &__title {
+      margin-top: 20px;
+
+      & i {
+        right: 5%;
+        font-size: 38px
+      }
+
+      & p {
+        font-size: 36px;
+        line-height: 47px;
+      }
+    }
+
+    & .form-data {
+      margin: 10px 0;
+      
+      &__text-control {
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+    }
+
+    & [type=submit] {
+      margin: 30px auto;
+      height: 35px;
+      display: block;
+    }
+  }
+
+
+}
+
+.publication {
+  margin: 0 auto;
+
+  &__picture {
+
+    & img {
+      width: 335px;
+      height: 190px;
+    }
+  }
+}
+}
+
+@media screen and (max-width: 439px) {
+.body-profile {
+
+  &__resume {
+    padding: 15px 0;
+
+    &__info {
+      width: 70%;
+    }
+  } 
+}
+
+.profile-rounded {
+  height: 100px;
+  width: 100px;
+}
+}

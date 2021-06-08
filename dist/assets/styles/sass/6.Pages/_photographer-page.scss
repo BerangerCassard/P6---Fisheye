@@ -1,0 +1,229 @@
+/**#pic1--1 {
+  background-image: url(dist/images/ProfilePicture/MimiKeel.jpg); ///build/images/FishEye_Photos/Photos/Mimi/Portrait_Nora.jpg
+}*/
+#profile-header {
+  font-size: 64px;
+  line-height: 83px;
+}
+#profile-location {
+  font-size: 24px;
+  line-height: 31px;
+}
+#profile-quote {
+  font-size: 18px;
+  line-height: 23px;
+}
+
+.body-profile {
+
+  &__resume {
+    background-color: $fourth;
+    display: flex;
+    justify-content: space-between;
+    padding: 31px 50px;
+    border-radius: 5px;
+
+    &__info {
+
+      &__name {
+          display: flex;
+
+          & button {
+              position: relative;
+              right: -80px;
+          }
+      }
+
+      &__static {
+
+        & p:nth-child(2) {
+          margin: 15px 0;
+        }
+      }
+
+      &__hashtag {
+
+        & ul {
+          display: flex;
+          gap: 1%;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  &__content {
+    margin: 10px 0;
+
+    &__order {
+      display: flex;
+      margin: 30px 0;
+
+      &__title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-right: 35px;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    &__pictures {
+      // margin: 45px 0;
+      display: flex;
+      flex-wrap: wrap;
+      // justify-content: center;
+      gap: 9%;
+      margin: 25px 0;
+
+    }
+  }
+
+  &__essential {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $secondary;
+    border-radius: 5px 5px 0 0;
+    width: 376px;
+    height: 69px;
+
+    &__like {
+      font-size: 24px;
+      font-weight: 500;
+
+      &::after {
+        font-family: "Font Awesome 5 Free";
+        content: "\f004";
+        color: black;
+        font-size: 0.9em;
+        font-weight: 700;
+        margin-left: 6px;
+      }
+    }
+
+    &__rate {
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+
+  &__contact {
+    display: none;
+    cursor: pointer;
+  }
+}
+
+.publication {
+  flex-basis: 25%;
+  margin: 15px 0;
+
+  &__picture {
+
+    & img {
+      border-radius: 5px;
+    }
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+
+    &__title {
+      font-size: 24px;
+      flex-basis: 275px;
+      display: flex;
+      align-items: center;
+    }
+
+    &__infos {
+      flex-basis: 145px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1%;
+
+      &__like {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+// Modal form
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+  background-color: rgb(255, 255, 255, 0.9);
+
+  &__content {
+    margin: 2% auto;
+    width: 669px;
+    height: 900px;
+    border-radius: 5px;
+    background-color: $secondary;
+    overflow: hidden;
+
+    &__title {
+      position: relative;
+      padding: 0 3%;
+
+      & i {
+        position: absolute;
+        right: 3%;
+        top : 5%;
+        color: white;
+        font-size: xxx-large;
+        cursor: pointer;
+      }
+
+      & p {
+      font-size: 64px;
+      font-weight: normal;
+      line-height: 4rem;
+      }
+    }
+
+    &__body {
+      padding: 15px 3%;
+
+      & .btn--primary {
+        margin-top: 21px;
+      }
+    }
+  }
+}
+
+.form-data {
+  display: flex;
+  flex-direction: column;
+
+  &__text-control {
+    font-size: 36px;
+    font-weight: normal;
+  }
+
+  &__input {
+    padding: 8px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 68px;
+
+    &--long {
+      padding: 8px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      height: 170px;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.btn--primary {
+    width: 170px;
+    height: 69px;
+    border-radius: 5%;
+    border: none !important;
+    background-color: $primary;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    text-align: center;
+}
+
+button {
+    background-color: white;
+    cursor: pointer;
+    text-decoration: none;
+}

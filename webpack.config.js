@@ -2,7 +2,10 @@ const path = require('path');
 const CopyPlugin  = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: {
+        index:'./src/index.ts',
+        model:'./src/domain/model.class.ts'
+    },
     module: {
         rules: [
             {
@@ -28,7 +31,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 { from: '**/*.html', to: '', context: "src/" },
-                { from: 'assets', to: 'assets', context: "src/" }
+                { from: 'assets', to: 'assets', context: "src/" },
             ]
         })
     ],

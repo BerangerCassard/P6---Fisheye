@@ -2,6 +2,7 @@ import {Photographer} from "./domain/model.class";
 import {Media} from "./domain/model.class";
 import {Image} from "./domain/model.class";
 import {Video} from "./domain/model.class";
+import {StringUtil} from "./common/string.util";
 //import { createRequire } from 'module';
 
 //const require = createRequire(import.meta.url)
@@ -24,7 +25,7 @@ fetch(dataFile)
              * Create photographers instances and push them into an Array
              * */
             let allPhotographersInstances: Photographer[] = [];
-            json.photographers.forEach(
+            let loadPhotographers = json.photographers.forEach(
                 (photographer: { name: string; id: number; city: string; country: string; tags: string[]; tagline: string; price: number; portrait: string; }) => {
                     let profile = new Photographer(photographer.name, photographer.id, photographer.city, photographer.country, photographer.price, photographer.portrait, photographer.tagline, photographer.tags);
                     allPhotographersInstances.push(profile)
@@ -71,10 +72,27 @@ fetch(dataFile)
 
             console.log('test', allPhotographersInstances)
 
+            /**
+             * Inject HTML for each photographer to display profiles
+             * */
             const container = document.getElementById('profiles')
             allPhotographersInstances.forEach( photographer => {
                 container.innerHTML += `${photographer.profileSummary()}`;
             })
+
+            /**
+             * For Each Tag, on click, reset HTML, filter photographers and inject new HTML
+             * */
+            const tagButton = document.getElementsByClassName('hashtag');
+            Array.from(tagButton).forEach(tag => tag.addEventListener('click', ()=> {
+                container.innerHTML = StringUtil.emptyString();
+                const filterByTag = allPhotographersInstances.filter( photographer => photographer.tags.includes(StringUtil.noHashAllLowCase(tag.innerHTML)));
+                filterByTag.forEach( photographer => {
+                    container.innerHTML += `${photographer.profileSummary()}`
+                })
+
+
+            }))
 
 
         }

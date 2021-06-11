@@ -15,7 +15,7 @@ export class StringUtil {
         return word.substring(1).toLocaleLowerCase()
     }
 
-    public static emptyString() {
+    public static empty() {
         return ''
     }
 }

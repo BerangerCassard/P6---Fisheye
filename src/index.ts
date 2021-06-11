@@ -6,18 +6,11 @@ import {StringUtil} from "./common/string.util";
 //import { createRequire } from 'module';
 
 //const require = createRequire(import.meta.url)
-
-const photographerA = new Photographer('Jean',456,"nantes",'France',45654, "portrait", 'portrait',["string"])
-const mediaA = new Media(454,5645,'date', 'altxt',456, ['string'], 325)
-
-photographerA.medias.push(mediaA);
-
-
 //const fetch = require("node-fetch");
 
 const dataFile = "./assets/data/photographers.json";
 
-fetch(dataFile)
+export const getData = fetch(dataFile)
     .then( (res: any) => res.json())
     .then( (json: any) => {
 
@@ -59,7 +52,6 @@ fetch(dataFile)
              * Merge Videos and Images instances into a global Media Array
              * */
             let AllMediasInstances: Media[] = imagesInstances.concat(videosInstances);
-            //console.log('All Medias', AllMediasInstances)
 
             /**
              * For each Photographer filter his owned Medias and save them into a medias variable
@@ -69,8 +61,6 @@ fetch(dataFile)
                 photographer.medias = ownedMedias
 
             })
-
-            console.log('test', allPhotographersInstances)
 
             /**
              * Inject HTML for each photographer to display profiles
@@ -83,16 +73,46 @@ fetch(dataFile)
             /**
              * For Each Tag, on click, reset HTML, filter photographers and inject new HTML
              * */
+
+                /**
+                 * filter with listener
+                 * */
             const tagButton = document.getElementsByClassName('hashtag');
             Array.from(tagButton).forEach(tag => tag.addEventListener('click', ()=> {
-                container.innerHTML = StringUtil.emptyString();
-                const filterByTag = allPhotographersInstances.filter( photographer => photographer.tags.includes(StringUtil.noHashAllLowCase(tag.innerHTML)));
-                filterByTag.forEach( photographer => {
+
+/*                 //filter with replace HTML method (not finished)
+
+                 //filter photographers without selected tag
+                 const photographersByTag = allPhotographersInstances.filter( photographer => !photographer.tags.includes(StringUtil.noHashAllLowCase(tag.innerHTML)));
+
+                 //foreach not tagged photographers, replace HTML by empty in Container
+                 const filterHTML = photographersByTag.forEach( photographer => {
+                    console.log(photographer.profileSummary());
+                    container.innerHTML.replace(photographer.profileSummary(), '')
+                    } )*/
+
+                container.innerHTML = StringUtil.empty()
+                const photographersByTag = allPhotographersInstances.filter( photographer => photographer.tags.includes(StringUtil.noHashAllLowCase(tag.innerHTML)));
+
+                photographersByTag.forEach( photographer => {
                     container.innerHTML += `${photographer.profileSummary()}`
                 })
 
 
             }))
+
+/*            /!**
+             * filter function to apply in HTML directly onclick
+             * *!/
+            function filter (target) {
+                container.innerHTML = StringUtil.empty();
+                const photographersByTag = allPhotographersInstances.filter( photographer => photographer.tags.includes(StringUtil.noHashAllLowCase(target)));
+                photographersByTag.forEach( photographer => {
+                    container.innerHTML += `${photographer.profileSummary()}`
+                })
+            }*/
+
+
 
 
         }

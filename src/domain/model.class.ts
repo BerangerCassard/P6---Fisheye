@@ -1,3 +1,5 @@
+import {getData} from "../index";
+
 export class Photographer {
 
     public medias = new Array<Media>()
@@ -22,11 +24,12 @@ export class Photographer {
     }
 
     public profileSummary() {
-       return  `
+
+    return `
     <div class="components">
          <div>
             <a class="profile__header" aria-label="visit profile" href="build/profilePage.html?id=${this.id}">
-              <img class="profile__header__profilepicture profile-rounded" title="${this.name}"  src="/assets/images/ProfilePicture/${this.portrait}" alt="">
+              <img class="profile__header__profilepicture profile-rounded" title="${this.name}" src="/assets/images/ProfilePicture/${this.portrait}" alt="">
               <h2 class="profile__header__name">${this.name}</h2>
             </a>
         </div>
@@ -35,21 +38,22 @@ export class Photographer {
         <p class="profile__description__quote">${this.tagLine}</p>
         <p class="profile__description__rate"><span class="rate">${this.price}€/jour</span></p>
       </div>
-      <div >
+      <div>
         <ul id="${this.id}" class="profile__hashtag">
         ${this.tagsList()}
         </ul>
       </div>
-    </div>
-        `
+    </div>`
     }
 
     private tagsList() {
         const tagsHTML = [];
-        this.tags.forEach( tag => { tagsHTML.push(`<li><button class="hashtag" title="${tag}" onclick="console.log('filter tag')">#${tag}</button></li>`);
+        this.tags.forEach( tag => {
+            tagsHTML.push(`<li><button class="hashtag" title="${tag}">#${tag}</button></li>`);
         })
         return tagsHTML.join('')
     }
+
 
 }
 

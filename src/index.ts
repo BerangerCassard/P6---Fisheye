@@ -101,16 +101,6 @@ export const getData = fetch(dataFile)
 
             }))
 
-/*            /!**
-             * filter function to apply in HTML directly onclick
-             * *!/
-            function filter (target) {
-                container.innerHTML = StringUtil.empty();
-                const photographersByTag = allPhotographersInstances.filter( photographer => photographer.tags.includes(StringUtil.noHashAllLowCase(target)));
-                photographersByTag.forEach( photographer => {
-                    container.innerHTML += `${photographer.profileSummary()}`
-                })
-            }*/
 
 
 

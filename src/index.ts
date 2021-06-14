@@ -94,18 +94,18 @@ export const getData = fetch(dataFile)
 
             }))
 
-        const tagListParent = document.getElementById('tagList');
-        tagListParent.addEventListener('click', (event)=> {
-            const target = event.target as HTMLTextAreaElement;
-            if(target.className == 'hashtag') {
-                console.log('hashtag listener');
-                container.innerHTML = StringUtil.empty()
-                const photographersByTag = allPhotographersInstances.filter( photographer => photographer.tags.includes(StringUtil.noHashAllLowCase(target.innerHTML)));
+        const tagListParents = document.getElementsByClassName('tagList');
+            Array.from(tagListParents).forEach( child => child.addEventListener('click', (event)=> {
+                const target = event.target as HTMLTextAreaElement;
+                if(target.className == 'hashtag') {
+                    console.log('hashtag listener');
+                    container.innerHTML = StringUtil.empty()
+                    const photographersByTag = allPhotographersInstances.filter( photographer => photographer.tags.includes(StringUtil.noHashAllLowCase(target.innerHTML)));
 
-                photographersByTag.forEach( photographer => {
-                    container.innerHTML += `${photographer.profileSummary()}`
-                })
-            } })
+                    photographersByTag.forEach( photographer => {
+                        container.innerHTML += `${photographer.profileSummary()}`
+                    })
+                } }))
 
 
 

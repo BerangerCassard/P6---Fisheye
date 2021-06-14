@@ -39,7 +39,7 @@ export class Photographer {
         <p class="profile__description__rate"><span class="rate">${this.price}€/jour</span></p>
       </div>
       <div>
-        <ul id="tagList" class="profile__hashtag">
+        <ul class="profile__hashtag tagList">
         ${this.tagsList()}
         </ul>
       </div>

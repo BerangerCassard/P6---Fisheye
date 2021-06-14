@@ -74,13 +74,13 @@ export const getData = fetch(dataFile)
              * For Each Tag, on click, reset HTML, filter photographers and inject new HTML
              * */
 
-                /**
+/*/!*                /!**
                  * filter with listener
-                 * */
+                 * *!/
             const tagButton = document.getElementsByClassName('hashtag');
             Array.from(tagButton).forEach(tag => tag.addEventListener('click', (event)=> {
 
-/*                 //filter with replace HTML method (not finished)
+/!*                 //filter with replace HTML method (not finished)
 
                  //filter photographers without selected tag
                  const photographersByTag = allPhotographersInstances.filter( photographer => !photographer.tags.includes(StringUtil.noHashAllLowCase(tag.innerHTML)));
@@ -89,22 +89,30 @@ export const getData = fetch(dataFile)
                  const filterHTML = photographersByTag.forEach( photographer => {
                     console.log(photographer.profileSummary());
                     container.innerHTML.replace(photographer.profileSummary(), '')
-                    } )*/
+                    } )*!/!*!/
+            }))*/
 
+            /**
+             * Filter with listener and event propagation
+             * */
 
-            }))
-
-        const tagListParents = document.getElementsByClassName('tagList');
+            const tagListParents = document.getElementsByClassName('tagList');
             Array.from(tagListParents).forEach( child => child.addEventListener('click', (event)=> {
                 const target = event.target as HTMLTextAreaElement;
                 if(target.className == 'hashtag') {
-                    console.log('hashtag listener');
-                    container.innerHTML = StringUtil.empty()
-                    const photographersByTag = allPhotographersInstances.filter( photographer => photographer.tags.includes(StringUtil.noHashAllLowCase(target.innerHTML)));
-
-                    photographersByTag.forEach( photographer => {
-                        container.innerHTML += `${photographer.profileSummary()}`
+                    /**
+                     * Filter photographers no matching tag and hide them
+                     * */
+                    const photographersNoTagged = allPhotographersInstances.filter( photographer => !photographer.tags.includes(StringUtil.noHashAllLowCase(target.innerHTML)));
+                    photographersNoTagged.forEach( photographer => {
+                        document.getElementById(`${photographer.id}`).style.display = 'none';
                     })
+                    /**
+                     * Filter photographers matching tag and show them
+                     * */
+                    const photographersTagged = allPhotographersInstances.filter( photographer => photographer.tags.includes(StringUtil.noHashAllLowCase(target.innerHTML)));
+                    photographersTagged.forEach( photographer => {
+                        document.getElementById(`${photographer.id}`).style.display = 'block'})
                 } }))
 
 

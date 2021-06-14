@@ -26,7 +26,7 @@ export class Photographer {
     public profileSummary() {
 
     return `
-    <div class="components">
+    <div id="${this.id}" class="components">
          <div>
             <a class="profile__header" aria-label="visit profile" href="build/profilePage.html?id=${this.id}">
               <img class="profile__header__profilepicture profile-rounded" title="${this.name}" src="/assets/images/ProfilePicture/${this.portrait}" alt="">

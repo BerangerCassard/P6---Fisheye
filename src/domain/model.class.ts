@@ -1,5 +1,3 @@
-import {getData} from "../index";
-
 export class Photographer {
 
     public medias = new Array<Media>()
@@ -28,7 +26,7 @@ export class Photographer {
     return `
     <div id="${this.id}" class="components">
          <div>
-            <a class="profile__header" aria-label="visit profile" href="build/profilePage.html?id=${this.id}">
+            <a class="profile__header" aria-label="visit profile" href="photographer.html?id=${this.id}">
               <img class="profile__header__profilepicture profile-rounded" title="${this.name}" src="/assets/images/ProfilePicture/${this.portrait}" alt="">
               <h2 class="profile__header__name">${this.name}</h2>
             </a>
@@ -52,6 +50,13 @@ export class Photographer {
             tagsHTML.push(`<li><button class="hashtag" title="${tag}">#${tag}</button></li>`);
         })
         return tagsHTML.join('')
+    }
+
+    public profileHeader() {
+        document.getElementById('profile-header').innerHTML = `${this.name}`;
+        document.getElementById('profile-location').innerHTML = `${this.city}, ${this.country}`;
+        document.getElementById('profile-quote').innerHTML = `${this.tagLine}`;
+        document.getElementById('profile-picture').setAttribute('src', `./assets/images/ProfilePicture/${this.id}.jpg`);
     }
 
 

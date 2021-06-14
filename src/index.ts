@@ -78,7 +78,7 @@ export const getData = fetch(dataFile)
                  * filter with listener
                  * */
             const tagButton = document.getElementsByClassName('hashtag');
-            Array.from(tagButton).forEach(tag => tag.addEventListener('click', ()=> {
+            Array.from(tagButton).forEach(tag => tag.addEventListener('click', (event)=> {
 
 /*                 //filter with replace HTML method (not finished)
 
@@ -91,17 +91,21 @@ export const getData = fetch(dataFile)
                     container.innerHTML.replace(photographer.profileSummary(), '')
                     } )*/
 
+
+            }))
+
+        const tagListParent = document.getElementById('tagList');
+        tagListParent.addEventListener('click', (event)=> {
+            const target = event.target as HTMLTextAreaElement;
+            if(target.className == 'hashtag') {
+                console.log('hashtag listener');
                 container.innerHTML = StringUtil.empty()
-                const photographersByTag = allPhotographersInstances.filter( photographer => photographer.tags.includes(StringUtil.noHashAllLowCase(tag.innerHTML)));
+                const photographersByTag = allPhotographersInstances.filter( photographer => photographer.tags.includes(StringUtil.noHashAllLowCase(target.innerHTML)));
 
                 photographersByTag.forEach( photographer => {
                     container.innerHTML += `${photographer.profileSummary()}`
                 })
-
-
-            }))
-
-
+            } })
 
 
 

@@ -4,7 +4,8 @@ const CopyPlugin  = require('copy-webpack-plugin');
 module.exports = {
     entry: {
         index:'./src/index.ts',
-        model:'./src/domain/model.class.ts'
+        model:'./src/domain/model.class.ts',
+        photographer: './src/photographer.ts'
     },
     module: {
         rules: [

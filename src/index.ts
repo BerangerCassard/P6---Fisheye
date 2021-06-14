@@ -71,28 +71,6 @@ export const getData = fetch(dataFile)
             })
 
             /**
-             * For Each Tag, on click, reset HTML, filter photographers and inject new HTML
-             * */
-
-/*/!*                /!**
-                 * filter with listener
-                 * *!/
-            const tagButton = document.getElementsByClassName('hashtag');
-            Array.from(tagButton).forEach(tag => tag.addEventListener('click', (event)=> {
-
-/!*                 //filter with replace HTML method (not finished)
-
-                 //filter photographers without selected tag
-                 const photographersByTag = allPhotographersInstances.filter( photographer => !photographer.tags.includes(StringUtil.noHashAllLowCase(tag.innerHTML)));
-
-                 //foreach not tagged photographers, replace HTML by empty in Container
-                 const filterHTML = photographersByTag.forEach( photographer => {
-                    console.log(photographer.profileSummary());
-                    container.innerHTML.replace(photographer.profileSummary(), '')
-                    } )*!/!*!/
-            }))*/
-
-            /**
              * Filter with listener and event propagation
              * */
 

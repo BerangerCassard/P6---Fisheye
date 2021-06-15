@@ -57,6 +57,7 @@ export class Photographer {
         document.getElementById('profile-location').innerHTML = `${this.city}, ${this.country}`;
         document.getElementById('profile-quote').innerHTML = `${this.tagLine}`;
         document.getElementById('profile-picture').setAttribute('src', `./assets/images/ProfilePicture/${this.id}.jpg`);
+        document.getElementById('tagsList').innerHTML = `${this.tagsList()}`
     }
 
 

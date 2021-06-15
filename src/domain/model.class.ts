@@ -101,6 +101,20 @@ export class Image extends Media {
     ) {
         super(id, photographerId, date, altTxt, price, tags, likes);
     }
+
+    public publication() {
+        return `
+      <img class="publication__picture">
+        <img id="picture" class="post" src="./assets/images/${this.photographerId}/${this.image}" alt="${this.altTxt}" role="img">
+    </div>
+    <div class="publication__description">
+      <div id="title" class="publication__description__title caption">${this.altTxt}</div>
+      <div class="publication__description__infos">
+        <p id="price" class="publication__description__infos__price caption">${this.price}€</p>
+        <p id="like" class="publication__description__infos__like like">${this.likes}</p>
+      </div>
+    </div>`
+    }
 }
 
 export class Video extends Media {
@@ -117,4 +131,32 @@ export class Video extends Media {
     ) {
         super(id, photographerId, date, altTxt, price, tags, likes);
     }
+
+    public publication() {
+        return `
+      <img class="publication__picture">
+        <video id="picture" class="post" src="./assets/images/${this.photographerId}/${this.video}" alt="${this.altTxt}" role="img" ></video>
+    </div>
+    <div class="publication__description">
+      <div id="title" class="publication__description__title caption">${this.altTxt}</div>
+      <div class="publication__description__infos">
+        <p id="price" class="publication__description__infos__price caption">${this.price}€</p>
+        <p id="like" class="publication__description__infos__like like">${this.likes}</p>
+      </div>
+    </div>`
+
+    }
 }
+
+export class MediaFactory {
+
+    /**
+     * Create a Video or an Image Object according to file type
+     */
+    public createMedia(id, photographerID, date, altTxt, price, tags, likes, type) {
+        if(type.includes('jpg')) {
+            return new Image(id, photographerID, date, altTxt, price, tags, likes, type)
+        } else if (type.includes('mp4')) {
+            return new Video(id, photographerID, date, altTxt, price, tags, likes, type)
+        }
+}}

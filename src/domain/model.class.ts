@@ -58,6 +58,8 @@ export class Photographer {
         document.getElementById('profile-quote').innerHTML = `${this.tagLine}`;
         document.getElementById('profile-picture').setAttribute('src', `./assets/images/ProfilePicture/${this.id}.jpg`);
         document.getElementById('tagsList').innerHTML = `${this.tagsList()}`
+        document.getElementById('summary-rate').innerHTML = `${this.price}€/jour`
+
     }
 
 
@@ -85,6 +87,10 @@ export class Media {
         public likes: number
     ) {
     }
+
+    public totalLikes(){
+        document.getElementById('summary-likes').innerHTML += `${this.likes}`
+    }
 }
 
 export class Image extends Media {
@@ -104,7 +110,7 @@ export class Image extends Media {
 
     public publication() {
         return `
-    <div>
+    <div class="publication" data-date="${this.date}" data-likes="${this.likes}" data-id="${this.id}">
            <div class="publication__picture">
             <img id="picture" class="post" src="./assets/images/${this.photographerId}/${this.image}" alt="${this.altTxt}" role="img">
         </div>
@@ -137,7 +143,7 @@ export class Video extends Media {
 
     public publication() {
         return `
-    <div>
+    <div class="publication" data-date="${this.date}" data-likes="${this.likes}" data-id="${this.id}">
         <div class="publication__picture">
             <video id="picture" class="post" src="./assets/images/${this.photographerId}/${this.video}" alt="${this.altTxt}" role="img" ></video>
         </div>

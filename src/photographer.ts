@@ -107,8 +107,28 @@ export const getData = fetch(dataFile)
         })
 
         /**
-         * Display Modal
+         * Open Modal
          */
+        const modal = document.getElementById('open-modal');
+        const contact = document.getElementById('contact-photographer'); //TODO contact or contactButton ?
+        contact.addEventListener('click', ()=> modal.style.display = 'block')
+
+        /**
+         * Close Modal
+         */
+        const closeModal = document.getElementById('close-modal');
+        closeModal.addEventListener('click', ()=> modal.style.display = 'none')
+
+        /**
+         * Modal completion
+         */
+        const validateModal = document.getElementById('validate-modal');
+        validateModal.addEventListener('click', (event)=> {
+            event.preventDefault();
+            console.log('firstName', (document.getElementById('first') as HTMLInputElement).value);
+            console.log('lastName', (document.getElementById('last') as HTMLInputElement).value);
+            console.log('mail', (document.getElementById('mail') as HTMLInputElement).value);
+        })
 
         }
     )

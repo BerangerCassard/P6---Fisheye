@@ -88,10 +88,10 @@
         <div class="body-profile__contact btn--primary"> Contactez-moi </div>
 
         <!-- contact modal form -->
-        <div class="modal">
+        <div id="open-modal" class="modal">
             <div class="modal__content">
                 <div class="modal__content__title">
-                    <i class="fas fa-times"></i>
+                    <i id="close-modal" class="fas fa-times"></i>
                     <p>Contactez-moi</p>
                     <p>Mimi Keel</p>
                 </div>
@@ -161,7 +161,7 @@
                                     name="message"
                                     id="message">
                         </div>
-                        <input class="btn--primary" type="submit" value="Envoyer">
+                        <input id="validate-modal" class="btn--primary" type="submit" value="Envoyer">
                     </form>
                 </div>
             </div>

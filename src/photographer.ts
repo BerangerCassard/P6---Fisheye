@@ -71,7 +71,6 @@ export const getData = fetch(dataFile)
         /**
          * Filter
          */
-        //(sortByLikes as any).forEach( media => mediasContainer.innerHTML += media.publication())
         const likesFilter = document.getElementById('order-choice');
         likesFilter.addEventListener('change', (event)=> {
             mediasContainer.innerHTML = StringUtil.empty();
@@ -81,15 +80,35 @@ export const getData = fetch(dataFile)
                 photographerMediasInstances.forEach( media => mediasContainer.innerHTML += media.publication())
             }
             else if((event.target as HTMLTextAreaElement).value == 'date') {
-                (photographerMediasInstances as unknown as Media[]).sort( ); //TODO factor with common
-
+                (photographerMediasInstances as unknown as Media[]).sort( (a,b) => (new Date(b.date) as any) - (new Date(a.date) as any) ); //TODO factor with common
+                photographerMediasInstances.forEach( media => mediasContainer.innerHTML += media.publication())
             }
             else if((event.target as HTMLTextAreaElement).value == 'title') {
-                console.log('title')
+                (photographerMediasInstances as unknown as Media[]).sort( (a,b) => a.altTxt.localeCompare(b.altTxt) ); //TODO factor with common
+                photographerMediasInstances.forEach( media => mediasContainer.innerHTML += media.publication())
+
             }
+/*            const target = (event.target as HTMLTextAreaElement).value;
+            switch (target) {
+                case 'likes':
+                    mediasContainer.innerHTML = StringUtil.empty();
+                    (photographerMediasInstances as unknown as Media[]).sort((a,b) => b.likes - a.likes ); //TODO try to make it works
+                    photographerMediasInstances.forEach( media => mediasContainer.innerHTML += media.publication())
 
-
+                case 'date':
+                    mediasContainer.innerHTML = StringUtil.empty();
+                    (photographerMediasInstances as unknown as Media[]).sort( (a,b) => (new Date(b.date) as any) - (new Date(a.date) as any) );
+                    photographerMediasInstances.forEach( media => mediasContainer.innerHTML += media.publication())
+                case 'title' :
+                    mediasContainer.innerHTML = StringUtil.empty();
+                    (photographerMediasInstances as unknown as Media[]).sort( (a,b) => a.altTxt.localeCompare(b.altTxt) );
+                    photographerMediasInstances.forEach( media => mediasContainer.innerHTML += media.publication())
+            }*/
         })
+
+        /**
+         * Display Modal
+         */
 
         }
     )

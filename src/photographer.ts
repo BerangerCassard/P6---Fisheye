@@ -139,7 +139,7 @@ export const getData = fetch(dataFile)
         for( i=0; i<photographerMediasInstances.length; i++) {
             if(photographerMediasInstances[i].image) {
                 modalContainer.innerHTML += `
-                <div id="${photographerMediasInstances[i].id}" class="slides">
+                <div id="${photographerMediasInstances[i].id}" class="slides" style="display: none" data-rank="${i}">
                   <div class="numberText"> ${i}/ ${photographerMediasInstances.length}</div>
                   <img src="./assets/images/${paramId}/${photographerMediasInstances[i].image}" style="width:100%">
                 </div>
@@ -147,7 +147,7 @@ export const getData = fetch(dataFile)
             }
             else if (photographerMediasInstances[i].video) {
                 modalContainer.innerHTML += `
-                <div id="${photographerMediasInstances[i].id}" class="slides">
+                <div id="${photographerMediasInstances[i].id}" class="slides" style="display: none" data-rank="${i}">
                   <div class="numberText"> ${i}/ ${photographerMediasInstances.length}</div>
                   <img src="./assets/images/${paramId}/${photographerMediasInstances[i].video}" style="width:100%">
                 </div>
@@ -162,19 +162,56 @@ export const getData = fetch(dataFile)
         let clickedMedia
 
         /**
-         * Open Lightbox Modal
+         * When click on Image...
          */
         Array.from(images).forEach( publication => publication.addEventListener('click', (event)=> {
+
+            /**
+             * Open Modal Lightbox
+             * */
             lightboxModal.style.display = 'block';
+
+            /**
+             * Save Image ID and for each Slide test if ID is matching, if yes, display block
+             * */
             clickedMedia = ((event.target as HTMLTextAreaElement).getAttribute('id'));
             Array.from(slides).forEach( slide => {
                 if(slide.id == clickedMedia) {
                     (slide as HTMLTextAreaElement).style.display = 'block'
                 }
             })
-            //console.log('clicked media', clickedMedia)
         }) )
 
+
+        /**
+         * Display next post
+         * */
+        const next = document.getElementById('next');
+        next.addEventListener('click', ()=> {
+            let i;
+            for(i=0; i<Array.from(slides).length; i++) {
+                if((Array.from(slides)[i] as HTMLTextAreaElement).style.display == "block") {
+                    (Array.from(slides)[i] as HTMLTextAreaElement).style.display = "none";
+                    console.log('next slide',(Array.from(slides)[++i] ));
+                    (Array.from(slides)[i++] as HTMLTextAreaElement).style.display = "block"
+                }
+            }
+        })
+
+        /**
+         * Display previous post
+         * */
+        const previous = document.getElementById('previous');
+        previous.addEventListener('click', ()=> {
+            let i;
+            for(i=0; i<Array.from(slides).length; i++) {
+                if((Array.from(slides)[i] as HTMLTextAreaElement).style.display == "block") {
+                    (Array.from(slides)[i] as HTMLTextAreaElement).style.display = "none";
+                    console.log('next slide',(Array.from(slides)[--i] ));
+                    (Array.from(slides)[i++] as HTMLTextAreaElement).style.display = "block"
+                }
+            }
+        })
 
 
         /**

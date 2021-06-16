@@ -130,45 +130,52 @@ export const getData = fetch(dataFile)
             console.log('mail', (document.getElementById('mail') as HTMLInputElement).value);
         })
 
-            /**
-             * Create slides HTML for each Media, Photo or Video
-             * */
-                //TODO make the page number start at 1
-            const modalContainer = document.getElementById('modal-medias');
-            let i
-            for( i=0; i<photographerMediasInstances.length; i++) {
-                if(photographerMediasInstances[i].image) {
-                    modalContainer.innerHTML += `
-                    <div class="slides">
-                      <div class="numberText"> ${i}/ ${photographerMediasInstances.length}</div>
-                      <img src="./assets/images/${paramId}/${photographerMediasInstances[i].image}" style="width:100%">
-                    </div>
-                `
-                }
-                else if (photographerMediasInstances[i].video) {
-                    modalContainer.innerHTML += `
-                    <div class="slides">
-                      <div class="numberText"> ${i}/ ${photographerMediasInstances.length}</div>
-                      <img src="./assets/images/${paramId}/${photographerMediasInstances[i].video}" style="width:100%">
-                    </div>
-                `
-                }
+        /**
+         * Create slides HTML for each Media, Photo or Video
+         * */
+            //TODO make the page number start at 1
+        const modalContainer = document.getElementById('modal-medias');
+        let i
+        for( i=0; i<photographerMediasInstances.length; i++) {
+            if(photographerMediasInstances[i].image) {
+                modalContainer.innerHTML += `
+                <div id="${photographerMediasInstances[i].id}" class="slides">
+                  <div class="numberText"> ${i}/ ${photographerMediasInstances.length}</div>
+                  <img src="./assets/images/${paramId}/${photographerMediasInstances[i].image}" style="width:100%">
+                </div>
+            `
             }
-
+            else if (photographerMediasInstances[i].video) {
+                modalContainer.innerHTML += `
+                <div id="${photographerMediasInstances[i].id}" class="slides">
+                  <div class="numberText"> ${i}/ ${photographerMediasInstances.length}</div>
+                  <img src="./assets/images/${paramId}/${photographerMediasInstances[i].video}" style="width:100%">
+                </div>
+            `
+            }
+        }
 
         const slides = document.getElementsByClassName('slides')
         const images = document.getElementsByClassName('post');
         const lightboxModal = document.getElementById('lightbox-modal');
         const crossLightboxModal = document.getElementById('close-lightbox-modal');
+        let clickedMedia
 
         /**
          * Open Lightbox Modal
          */
         Array.from(images).forEach( publication => publication.addEventListener('click', (event)=> {
             lightboxModal.style.display = 'block';
-            Array.from(slides).forEach( slide => (slide as HTMLTextAreaElement).style.display = 'none');
-            (event.target as HTMLTextAreaElement).style.display = "block";
+            clickedMedia = ((event.target as HTMLTextAreaElement).getAttribute('id'));
+            Array.from(slides).forEach( slide => {
+                if(slide.id == clickedMedia) {
+                    (slide as HTMLTextAreaElement).style.display = 'block'
+                }
+            })
+            //console.log('clicked media', clickedMedia)
         }) )
+
+
 
         /**
          * Close Lightbox Modal

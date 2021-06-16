@@ -110,7 +110,7 @@ export class Image extends Media {
         return `
     <div class="publication" data-date="${this.date}" data-likes="${this.likes}" data-id="${this.id}">
            <div class="publication__picture">
-            <img id="picture" class="post" src="./assets/images/${this.photographerId}/${this.image}" alt="${this.altTxt}" role="img">
+            <img id="${this.id}" class="post" src="./assets/images/${this.photographerId}/${this.image}" alt="${this.altTxt}" role="img">
         </div>
         <div class="publication__description">
           <div id="title" class="publication__description__title caption">${this.altTxt}</div>
@@ -143,7 +143,7 @@ export class Video extends Media {
         return `
     <div class="publication" data-date="${this.date}" data-likes="${this.likes}" data-id="${this.id}">
         <div class="publication__picture">
-            <video id="picture" class="post" src="./assets/images/${this.photographerId}/${this.video}" alt="${this.altTxt}" role="img" ></video>
+            <video id="${this.id}" class="post" src="./assets/images/${this.photographerId}/${this.video}" alt="${this.altTxt}" role="img" ></video>
         </div>
         <div class="publication__description">
           <div id="title" class="publication__description__title caption">${this.altTxt}</div>

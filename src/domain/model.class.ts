@@ -52,13 +52,14 @@ export class Photographer {
         return tagsHTML.join('')
     }
 
-    public profileHeader() {
+    public profileHeaderAndSummary(sumLikes: number) {
         document.getElementById('profile-header').innerHTML = `${this.name}`;
         document.getElementById('profile-location').innerHTML = `${this.city}, ${this.country}`;
         document.getElementById('profile-quote').innerHTML = `${this.tagLine}`;
         document.getElementById('profile-picture').setAttribute('src', `./assets/images/ProfilePicture/${this.id}.jpg`);
         document.getElementById('tagsList').innerHTML = `${this.tagsList()}`
         document.getElementById('summary-rate').innerHTML = `${this.price}€/jour`
+        document.getElementById('summary-likes').innerHTML += sumLikes
 
     }
 
@@ -88,9 +89,6 @@ export class Media {
     ) {
     }
 
-    public totalLikes(){
-        document.getElementById('summary-likes').innerHTML += `${this.likes}`
-    }
 }
 
 export class Image extends Media {

@@ -24,7 +24,6 @@ export const getData = fetch(dataFile)
          * Create a photographer object
          */
         const photographerInstance = new Photographer(photographer.name, photographer.id, photographer.city, photographer.country, photographer.price, photographer.portrait, photographer.tagline, photographer.tags);
-        photographerInstance.profileHeader()
 
         /**
          * Create a media Factory
@@ -53,13 +52,44 @@ export const getData = fetch(dataFile)
         })
 
         /**
-         * For each Media create HTML
+         * Total Likes
+         */
+        const likesList = (photographerMediasInstances as unknown as Media[]).map( media => media.likes);
+        const sumLikes = likesList.reduce( (previousValue, currentValue) => previousValue + currentValue);
+
+        /**
+         * Display photographers header and summary
+         * */
+        photographerInstance.profileHeaderAndSummary(sumLikes)
+
+        /**
+         * For each Media display publication
          */
         const mediasContainer = document.getElementById('publication-section');
-        photographerMediasInstances.forEach( media => {
-            mediasContainer.innerHTML += media.publication()
+        photographerMediasInstances.forEach( media => mediasContainer.innerHTML += media.publication())
+
+        /**
+         * Filter
+         */
+        //(sortByLikes as any).forEach( media => mediasContainer.innerHTML += media.publication())
+        const likesFilter = document.getElementById('order-choice');
+        likesFilter.addEventListener('change', (event)=> {
+            mediasContainer.innerHTML = StringUtil.empty();
+
+            if((event.target as HTMLTextAreaElement).value == 'likes') {
+                (photographerMediasInstances as unknown as Media[]).sort((a,b) => b.likes - a.likes ); //TODO factor with common
+                photographerMediasInstances.forEach( media => mediasContainer.innerHTML += media.publication())
             }
-        )
+            else if((event.target as HTMLTextAreaElement).value == 'date') {
+                (photographerMediasInstances as unknown as Media[]).sort( ); //TODO factor with common
+
+            }
+            else if((event.target as HTMLTextAreaElement).value == 'title') {
+                console.log('title')
+            }
+
+
+        })
 
         }
     )

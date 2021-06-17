@@ -138,20 +138,16 @@ export const getData = fetch(dataFile)
         let i
         for( i=0; i<photographerMediasInstances.length; i++) {
             if(photographerMediasInstances[i].image) {
-                modalContainer.innerHTML += `
-                <div id="${photographerMediasInstances[i].id}" class="slides" style="display: none" data-rank="${i}">
+                modalContainer.innerHTML += `<div id="${photographerMediasInstances[i].id}" class="slides" style="display: none" data-rank="${i}">
                   <div class="numberText"> ${i}/ ${photographerMediasInstances.length}</div>
                   <img src="./assets/images/${paramId}/${photographerMediasInstances[i].image}" style="width:100%">
-                </div>
-            `
+                </div>`
             }
             else if (photographerMediasInstances[i].video) {
-                modalContainer.innerHTML += `
-                <div id="${photographerMediasInstances[i].id}" class="slides" style="display: none" data-rank="${i}">
+                modalContainer.innerHTML += `<div id="${photographerMediasInstances[i].id}" class="slides" style="display: none" data-rank="${i}">
                   <div class="numberText"> ${i}/ ${photographerMediasInstances.length}</div>
                   <img src="./assets/images/${paramId}/${photographerMediasInstances[i].video}" style="width:100%">
-                </div>
-            `
+                </div>`
             }
         }
 
@@ -182,33 +178,30 @@ export const getData = fetch(dataFile)
             })
         }) )
 
-
         /**
-         * Display next post
+         * Display next post if not last child
          * */
         const next = document.getElementById('next');
         next.addEventListener('click', ()=> {
             let i;
             for(i=0; i<Array.from(slides).length; i++) {
-                if((Array.from(slides)[i] as HTMLTextAreaElement).style.display == "block") {
+                if((Array.from(slides)[i] as HTMLTextAreaElement).style.display == "block" && (Array.from(slides)[i] as HTMLTextAreaElement) !== modalContainer.lastChild ) {
                     (Array.from(slides)[i] as HTMLTextAreaElement).style.display = "none";
-                    console.log('next slide',(Array.from(slides)[++i] ));
-                    (Array.from(slides)[i++] as HTMLTextAreaElement).style.display = "block"
+                    (Array.from(slides)[++i] as HTMLTextAreaElement).style.display = "block";
                 }
             }
         })
 
         /**
-         * Display previous post
+         * Display previous post if not first child
          * */
         const previous = document.getElementById('previous');
         previous.addEventListener('click', ()=> {
             let i;
             for(i=0; i<Array.from(slides).length; i++) {
-                if((Array.from(slides)[i] as HTMLTextAreaElement).style.display == "block") {
+                if((Array.from(slides)[i] as HTMLTextAreaElement).style.display == "block" && (Array.from(slides)[i] as HTMLTextAreaElement) !== modalContainer.firstChild) {
                     (Array.from(slides)[i] as HTMLTextAreaElement).style.display = "none";
-                    console.log('next slide',(Array.from(slides)[--i] ));
-                    (Array.from(slides)[i++] as HTMLTextAreaElement).style.display = "block"
+                    (Array.from(slides)[--i] as HTMLTextAreaElement).style.display = "block";
                 }
             }
         })

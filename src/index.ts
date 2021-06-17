@@ -3,10 +3,8 @@ import {Media} from "./domain/model.class";
 import {Image} from "./domain/model.class";
 import {Video} from "./domain/model.class";
 import {StringUtil} from "./common/string.util";
-//import { createRequire } from 'module';
+import "./assets/styles/sass/main.scss"
 
-//const require = createRequire(import.meta.url)
-//const fetch = require("node-fetch");
 
 const dataFile = "./assets/data/photographers.json";
 

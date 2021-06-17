@@ -3,6 +3,7 @@ import {Media} from "./domain/model.class";
 import {Image} from "./domain/model.class";
 import {Video} from "./domain/model.class";
 import {StringUtil} from "./common/string.util";
+import "./assets/styles/sass/main.scss";
 //import { createRequire } from 'module';
 
 //const require = createRequire(import.meta.url)

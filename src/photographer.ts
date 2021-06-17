@@ -69,7 +69,7 @@ export const getData = fetch(dataFile)
         photographerMediasInstances.forEach( media => mediasContainer.innerHTML += media.publication())
 
         /**
-         * Filter
+         * Filter //TODO review filter by title
          */
         const likesFilter = document.getElementById('order-choice');
         likesFilter.addEventListener('change', (event)=> {
@@ -187,8 +187,7 @@ export const getData = fetch(dataFile)
             for(i=0; i<Array.from(slides).length; i++) {
                 if((Array.from(slides)[i] as HTMLTextAreaElement).style.display == "block" && (Array.from(slides)[i] as HTMLTextAreaElement) !== modalContainer.lastChild ) {
                     (Array.from(slides)[i] as HTMLTextAreaElement).style.display = "none";
-                    (Array.from(slides)[++i] as HTMLTextAreaElement).style.display = "block";
-                }
+                    (Array.from(slides)[++i] as HTMLTextAreaElement).style.display = "block"}
             }
         })
 
@@ -201,8 +200,7 @@ export const getData = fetch(dataFile)
             for(i=0; i<Array.from(slides).length; i++) {
                 if((Array.from(slides)[i] as HTMLTextAreaElement).style.display == "block" && (Array.from(slides)[i] as HTMLTextAreaElement) !== modalContainer.firstChild) {
                     (Array.from(slides)[i] as HTMLTextAreaElement).style.display = "none";
-                    (Array.from(slides)[--i] as HTMLTextAreaElement).style.display = "block";
-                }
+                    (Array.from(slides)[--i] as HTMLTextAreaElement).style.display = "block"}
             }
         })
 

@@ -3,9 +3,12 @@
 
   &__title {
     position: relative;
-    left: 73%;
+    text-align: right;
+    right: 150px;
+    //left: 0;
     top: 4px;
     margin-top: 22px;
+    //width: 310px;
   }
 
   &__section {

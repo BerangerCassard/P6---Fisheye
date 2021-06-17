@@ -22,11 +22,12 @@
     display: flex;
     align-items: center;
     width: 48%;
+    justify-content: flex-end;
 
     & ul {
       display: flex;
       gap: 1%;
-      width: 100%;
+      width: 580px;
       flex-wrap: wrap;
       justify-content: center;
       padding-left: 0;

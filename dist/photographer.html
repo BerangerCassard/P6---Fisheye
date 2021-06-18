@@ -6,8 +6,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://kit.fontawesome.com/6db0ba0994.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title id="title"></title>
+<!--    <link rel="stylesheet" type="text/css" href="./assets/styles/css/style.css">-->
+    <title id="photographer"></title>
 </head>
 <body>
 <div class="bloc">
@@ -38,12 +38,7 @@
                     <p id="profile-quote" class="quote" ></p>
                 </div>
                 <div class="body-profile__resume__info__hashtag">
-                    <ul>
-                        <li ><a class="hashtag" title="tag" href="">#portrait</a></li>
-                        <li ><a class="hashtag" title="tag" href="">#events</a></li>
-                        <li ><a class="hashtag" title="tag" href="">#travel</a></li>
-                        <li ><a class="hashtag" title="tag" href="">#animals</a></li>
-                    </ul>
+                    <ul id="tagsList"></ul>
                 </div>
             </div>
 
@@ -62,9 +57,9 @@
 
                 <!-- selector -->
                 <div class="orderby">
-                    <label class="orderby__label" for="orderby"></label>
-                    <select class="orderby__choice" name="order by" id="orderby">
-                        <option id="popularity" class="orderby__choice__value" value="popularity">Popularité</option>
+                    <label class="orderby__label" for="order-choice"></label>
+                    <select class="orderby__choice" name="order by" id="order-choice">
+                        <option id="popularity" class="orderby__choice__value" value="likes">Popularité</option>
                         <option id="date" class="orderby__choice__value" value="date" >Date</option>
                         <option id="title" class="orderby__choice__value" value="title" >Titre</option>
                     </select>
@@ -87,16 +82,16 @@
         <!-- thumbnail -->
 
         <div id="essential" class="body-profile__essential">
-            <!-- <p class="body-profile__essential__like" >297 081</p>
-            <p class="body-profile__essential__rate" >300€/jour</p> -->
+            <p id="summary-likes" class="body-profile__essential__like" ></p>
+            <p id="summary-rate" class="body-profile__essential__rate" >€/jour</p>
         </div>
         <div class="body-profile__contact btn--primary"> Contactez-moi </div>
 
         <!-- contact modal form -->
-        <div class="modal">
+        <div id="open-modal" class="modal">
             <div class="modal__content">
                 <div class="modal__content__title">
-                    <i class="fas fa-times"></i>
+                    <i id="close-modal" class="fas fa-times"></i>
                     <p>Contactez-moi</p>
                     <p>Mimi Keel</p>
                 </div>
@@ -166,22 +161,21 @@
                                     name="message"
                                     id="message">
                         </div>
-                        <input class="btn--primary" type="submit" value="Envoyer">
+                        <input id="validate-modal" class="btn--primary" type="submit" value="Envoyer">
                     </form>
                 </div>
             </div>
         </div>
 
         <!-- The Modal/Lightbox -->
-        <div id="myModal" class="modal">
-            <span class="modal__close cursor fas fa-times" onclick="closeLightboxModal()"></span>
-            <div class="modal__content">
-                <div id="modal-medias">
-                </div>
+        <div id="lightbox-modal" class="modal">
+            <span id="close-lightbox-modal" class="modal__close cursor fas fa-times"></span>
+            <div id="modal-container" class="modal__content">
+                <div id="modal-medias" ></div>
 
                 <!-- Next/previous controls -->
-                <a class="modal__content__prev fas fa-chevron-left" onclick="plusSlides(-1)"></a>
-                <a class="modal__content__next fas fa-chevron-right" onclick="plusSlides(1)"></a>
+                <a id="previous" class="modal__content__prev fas fa-chevron-left" ></a>
+                <a id="next" class="modal__content__next fas fa-chevron-right" ></a>
 
                 <!-- Caption text -->
                 <div class="modal__content__caption-container">
@@ -195,7 +189,7 @@
     </div>
 </div>
 
-<script src="../src/scripts/components/lightbox.js"></script>
+<script defer src="photographer.bundle.js"></script>
 
 
 

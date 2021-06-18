@@ -53,7 +53,7 @@
   }
 
   &__content {
-    margin: 10px 0;
+    margin: 10px 0 80px 0;
 
     &__order {
       display: flex;
@@ -126,11 +126,16 @@
     & img {
       border-radius: 5px;
     }
+
+    & video {
+      border-radius: 5px;
+    }
   }
 
   &__description {
     display: flex;
     justify-content: space-between;
+    width: 350px;
 
     &__title {
       font-size: 24px;

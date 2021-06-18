@@ -1,19 +1,22 @@
 //  responsvie for home
 
-@media screen and (max-width: 1450px) {
+//TODO eventually margin top with percent
+
+@media screen and (max-width: 1683px) {
 .bloc {
-  width: 95%;
+  //width: 95%;
 }
 
 .header-home {
   flex-direction: column;
+  width: 77%;
 
   &__nav {
     width: 100%;
     margin-top: 25px;
 
     & ul {
-      padding-left: 0; 
+      padding-left: 0;
       margin: auto;
       width: 70%;
       display: flex;
@@ -23,15 +26,15 @@
 }
 
 .main {
-    
+
   &__title {
-    position: initial;
+    //position: initial;
     text-align: right;
     margin-top: 0;
     }
 
   &__section {
-    margin-top: 120px;
+    margin-top: 60px;
   }
   }
 }
@@ -42,10 +45,10 @@
   &__title {
     font-size: 14px;
   }
-  
+
   &__section {
     margin: 35px auto;
-    margin-top: 86px;
+    margin-top: 50px;
 
     &__line {
       flex-direction: column;
@@ -56,23 +59,32 @@
 }
 
 .main {
-  
+
   &__section {
-    margin-top: 97px;
+    //margin-top: 97px;
   }
 }
 
 .profile {
-  margin: 30px auto; 
+  margin: 30px auto;
   width : 100%;
 }
 }
+
+@media screen and (max-width: 980px){
+  .main {
+
+    &__section {
+     flex-direction: column;
+    }
+}
+
 
 @media screen and (max-width: 567px) {
 .main {
 
   &__section {
-    margin-top: 133px;
+    margin-top: 98px;
   }
 }
 }
@@ -100,12 +112,31 @@
 .main{
 
   &__section {
-    margin-top: 184px;
+    //margin-top: 184px;
   }
 }
 }
 
+
+
+
+
 // responsive for photographer page
+
+@media screen and (max-width: 1439px) {
+
+  .body-profile {
+
+    &__content {
+
+      &__picutres {
+        justify-content: space-around;
+      }
+    }
+  }
+}
+
+
 
 @media screen and (max-width: 1300px) {
 .publication {
@@ -117,7 +148,7 @@
     }
 
     &__infos {
-      
+
       & p {
         font-size: 0.9rem;
       }
@@ -125,6 +156,16 @@
   }
 }
 }
+
+  @media screen and (max-width: 1050px) {
+    .body-profile__content__pictures {
+      flex-direction: column;
+    }
+
+    .publication__picture {
+      height: 190px;
+    }
+  }
 
 @media screen and (max-width: 930px) {
 .body-profile {
@@ -160,6 +201,7 @@
 
     &__pictures {
 
+
       &__line {
         flex-direction: column;
       }
@@ -194,7 +236,12 @@
 }
 }
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 982px) {
+
+  .main__title {
+    right: 3%;
+  }
+
 .body-profile {
 
   & .header-profile {
@@ -218,7 +265,7 @@
           line-height: 17px;
           margin: 6px 0;
         }
-    
+
     &__hashtag {
       font-size: 13px;
       line-height: 17px;
@@ -267,7 +314,7 @@
 
     & .form-data {
       margin: 10px 0;
-      
+
       &__text-control {
         font-size: 24px;
         margin-bottom: 15px;
@@ -306,11 +353,26 @@
     &__info {
       width: 70%;
     }
-  } 
+  }
 }
+  .header-home__logo {
+    width: 137px;
+  }
 
 .profile-rounded {
   height: 100px;
   width: 100px;
 }
+}}
+
+@media screen and (max-width: 300px){
+  .header-home__logo {
+    width: 105px;
+  }
+
+  .main__title {
+    margin: 22px auto 0 46%;
+  }
 }
+
+// P

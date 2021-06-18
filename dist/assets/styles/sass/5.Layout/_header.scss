@@ -1,10 +1,11 @@
-// header home 
+// header home
 
 .header-home {
   display: flex;
+  left: 12%;
   flex-direction: row;
   position: absolute;
-  width: 95%;
+  width: 88%;
   // margin-top: 5px;
 
   & > a {
@@ -15,19 +16,24 @@
 
   &__logo {
     width: 200px;
+    position: relative;
+    left: -23px;
   }
 
   &__nav {
     display: flex;
     align-items: center;
-    width: 55%;
+    width: 48%;
+    justify-content: flex-end;
 
     & ul {
       display: flex;
       gap: 1%;
-      width: 100%;
+      width: 580px;
       flex-wrap: wrap;
-        
+      justify-content: center;
+      padding-left: 0;
+
       & li {
         margin: 4px 0;
       }

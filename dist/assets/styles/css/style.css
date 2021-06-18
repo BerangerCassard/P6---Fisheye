@@ -292,7 +292,6 @@ body {
 }
 .main__title {
   position: relative;
-  left: 77%;
   top: 4px;
   margin-top: 22px;
 }
@@ -423,7 +422,7 @@ body {
 }
 
 .publication {
-  flex-basis: 25%;
+  //flex-basis: 25%;
   margin: 15px 0;
 }
 .publication__picture img {

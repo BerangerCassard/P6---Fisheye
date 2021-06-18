@@ -422,7 +422,7 @@ body {
 }
 
 .publication {
-  flex-basis: 25%;
+  //flex-basis: 25%;
   margin: 15px 0;
 }
 .publication__picture img {

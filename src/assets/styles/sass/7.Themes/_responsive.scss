@@ -117,6 +117,10 @@
 }
 }
 
+
+
+
+
 // responsive for photographer page
 
 @media screen and (max-width: 1300px) {
@@ -137,6 +141,16 @@
   }
 }
 }
+
+  @media screen and (max-width: 1050px) {
+    .body-profile__content__pictures {
+      flex-direction: column;
+    }
+
+    .publication__picture {
+      height: 190px;
+    }
+  }
 
 @media screen and (max-width: 930px) {
 .body-profile {
@@ -206,7 +220,7 @@
 }
 }
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 982px) {
 
   .main__title {
     right: 3%;
@@ -344,3 +358,5 @@
     margin: 22px auto 0 46%;
   }
 }
+
+// P

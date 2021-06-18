@@ -72,7 +72,7 @@
       // margin: 45px 0;
       display: flex;
       flex-wrap: wrap;
-      // justify-content: center;
+      justify-content: space-between;
       gap: 9%;
       margin: 25px 0;
 
@@ -118,7 +118,7 @@
 }
 
 .publication {
-  flex-basis: 25%;
+  width: fit-content;
   margin: 15px 0;
 
   &__picture {

@@ -1,6 +1,8 @@
 //  responsvie for home
 
-@media screen and (max-width: 1450px) {
+//TODO eventually margin top with percent
+
+@media screen and (max-width: 1683px) {
 .bloc {
   //width: 95%;
 }
@@ -82,7 +84,7 @@
 .main {
 
   &__section {
-    margin-top: 133px;
+    margin-top: 98px;
   }
 }
 }
@@ -110,7 +112,7 @@
 .main{
 
   &__section {
-    margin-top: 184px;
+    //margin-top: 184px;
   }
 }
 }
@@ -207,7 +209,7 @@
 @media screen and (max-width: 930px) {
 
   .main__title {
-    right: 8%;
+    right: 3%;
   }
 
 .body-profile {

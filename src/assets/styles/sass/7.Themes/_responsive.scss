@@ -69,6 +69,15 @@
 }
 }
 
+@media screen and (max-width: 980px){
+  .main {
+
+    &__section {
+     flex-direction: column;
+    }
+}
+
+
 @media screen and (max-width: 567px) {
 .main {
 
@@ -314,4 +323,4 @@
   height: 100px;
   width: 100px;
 }
-}
+}}

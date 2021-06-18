@@ -205,6 +205,11 @@
 }
 
 @media screen and (max-width: 930px) {
+
+  .main__title {
+    right: 8%;
+  }
+
 .body-profile {
 
   & .header-profile {
@@ -327,3 +332,13 @@
   width: 100px;
 }
 }}
+
+@media screen and (max-width: 300px){
+  .header-home__logo {
+    width: 105px;
+  }
+
+  .main__title {
+    margin: 22px auto 0 46%;
+  }
+}

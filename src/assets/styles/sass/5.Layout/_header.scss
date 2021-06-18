@@ -2,7 +2,7 @@
 
 .header-home {
   display: flex;
-  left: 121px;
+  left: 12%;
   flex-direction: row;
   position: absolute;
   width: 88%;
@@ -16,6 +16,8 @@
 
   &__logo {
     width: 200px;
+    position: relative;
+    left: -23px;
   }
 
   &__nav {

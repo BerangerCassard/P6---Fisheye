@@ -32,7 +32,7 @@
     }
 
   &__section {
-    margin-top: 120px;
+    margin-top: 60px;
   }
   }
 }
@@ -46,7 +46,7 @@
 
   &__section {
     margin: 35px auto;
-    margin-top: 86px;
+    margin-top: 50px;
 
     &__line {
       flex-direction: column;
@@ -59,7 +59,7 @@
 .main {
 
   &__section {
-    margin-top: 97px;
+    //margin-top: 97px;
   }
 }
 
@@ -318,6 +318,9 @@
     }
   }
 }
+  .header-home__logo {
+    width: 137px;
+  }
 
 .profile-rounded {
   height: 100px;

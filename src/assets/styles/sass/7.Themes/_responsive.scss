@@ -291,7 +291,7 @@
     margin: 0;
 
     &__pictures {
-      margin: 0;
+      margin: 0 0 100px ;
     }
   }
 
@@ -337,6 +337,11 @@
   &__picture {
 
     & img {
+      width: 335px;
+      height: 190px;
+    }
+
+    & video {
       width: 335px;
       height: 190px;
     }

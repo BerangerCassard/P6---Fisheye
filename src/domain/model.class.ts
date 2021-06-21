@@ -60,8 +60,7 @@ export class Photographer {
         document.getElementById('tagsList').innerHTML = `${this.tagsList()}`
         document.getElementById('summary-rate').innerHTML = `${this.price}€/jour`
         document.getElementById('summary-likes').innerHTML += sumLikes;
-        document.getElementById('contact-name').innerHTML = `${this.name}`
-
+        document.getElementById('contact-name').innerHTML = `${this.name}`;
     }
 
 
@@ -89,7 +88,6 @@ export class Media {
         public likes: number
     ) {
     }
-
 }
 
 export class Image extends Media {

@@ -67,7 +67,9 @@ export const getData = fetch(dataFile)
              * For each Media display publication
              */
             const mediasContainer = document.getElementById('publication-section');
-            photographerMediasInstances.forEach(media => mediasContainer.innerHTML += media.publication())
+            photographerMediasInstances.forEach(media => {
+                mediasContainer.innerHTML += media.publication();
+            })
 
             /**
              * Filter //TODO review filter by title
@@ -109,9 +111,9 @@ export const getData = fetch(dataFile)
              * Increment Likes
              */
             const likes = document.getElementsByClassName('publication__description__infos__like');
-            Array.from(likes).forEach( like => like.addEventListener( 'click', (event)=> {
+            Array.from(likes).forEach(like => like.addEventListener('click', (event) => {
                 (event.target as HTMLTextAreaElement).innerHTML = `${parseInt((event.target as HTMLTextAreaElement).innerText) + 1}`
-            }) )
+            }))
 
             /**
              * Open Modal
@@ -161,6 +163,7 @@ export const getData = fetch(dataFile)
             const images = document.getElementsByClassName('post');
             const lightboxModal = document.getElementById('lightbox-modal');
             const crossLightboxModal = document.getElementById('close-lightbox-modal');
+            const caption = document.getElementById('caption');
             let clickedMedia
 
             /**
@@ -182,10 +185,26 @@ export const getData = fetch(dataFile)
                         (slide as HTMLTextAreaElement).style.display = 'block'
                     }
                 })
+
+                /**
+                 * Display caption
+                 * */
+                const clickedMediaInstance = photographerMediasInstances.find(media => media.id == clickedMedia);
+                caption.innerHTML = `${clickedMediaInstance.altTxt}`
             }))
 
             /**
-             * Display next post if not last child
+             * Find Active Media and inject altTxt in caption
+             * */
+            function captionForActiveMedia() {
+                const openMedia = Array.from(slides).find(media => (media as HTMLTextAreaElement).style.display == 'block');
+                const openMediaID = openMedia.getAttribute('id');
+                const openMediaInstance = photographerMediasInstances.find(media => media.id == openMediaID);
+                caption.innerHTML = `${openMediaInstance.altTxt}`
+            }
+
+            /**
+             * Display next post if not last child and change caption
              * */
             const next = document.getElementById('next');
             next.addEventListener('click', () => {
@@ -196,6 +215,7 @@ export const getData = fetch(dataFile)
                         (Array.from(slides)[++i] as HTMLTextAreaElement).style.display = "block"
                     }
                 }
+                captionForActiveMedia()
             })
 
             /**
@@ -210,8 +230,8 @@ export const getData = fetch(dataFile)
                         (Array.from(slides)[--i] as HTMLTextAreaElement).style.display = "block"
                     }
                 }
+                captionForActiveMedia()
             })
-
 
             /**
              * Close Lightbox Modal

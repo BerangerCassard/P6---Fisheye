@@ -59,7 +59,8 @@ export class Photographer {
         document.getElementById('profile-picture').setAttribute('src', `./assets/images/ProfilePicture/${this.id}.jpg`);
         document.getElementById('tagsList').innerHTML = `${this.tagsList()}`
         document.getElementById('summary-rate').innerHTML = `${this.price}€/jour`
-        document.getElementById('summary-likes').innerHTML += sumLikes
+        document.getElementById('summary-likes').innerHTML += sumLikes;
+        document.getElementById('contact-name').innerHTML = `${this.name}`
 
     }
 

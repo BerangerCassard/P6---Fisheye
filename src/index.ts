@@ -9,8 +9,8 @@ import "./assets/styles/sass/main.scss"
 const dataFile = "./assets/data/photographers.json";
 
 export const getData = fetch(dataFile)
-    .then( (res: any) => res.json())
-    .then( (json: any) => {
+    .then((res: any) => res.json())
+    .then((json: any) => {
 
             /**
              * Create photographers instances and push them into an Array
@@ -35,7 +35,7 @@ export const getData = fetch(dataFile)
             const imagesInstances: Media[] = [];
             images.forEach(
                 (image: { id: number; photographerId: number; date: string; altTxt: string; price: number; tags: string[]; likes: number; image: string; }) => {
-                    let imageMedia = new Image(image.id, image.photographerId,image.date, image.altTxt, image.price, image.tags, image.likes, image.image)
+                    let imageMedia = new Image(image.id, image.photographerId, image.date, image.altTxt, image.price, image.tags, image.likes, image.image)
                     imagesInstances.push(imageMedia)
                 }
             )
@@ -54,8 +54,8 @@ export const getData = fetch(dataFile)
             /**
              * For each Photographer filter his owned Medias and save them into a medias variable
              * */
-            allPhotographersInstances.forEach( photographer => {
-                let ownedMedias = AllMediasInstances.filter( media => media.photographerId = photographer.id);
+            allPhotographersInstances.forEach(photographer => {
+                let ownedMedias = AllMediasInstances.filter(media => media.photographerId = photographer.id);
                 photographer.medias = ownedMedias
 
             })
@@ -64,7 +64,7 @@ export const getData = fetch(dataFile)
              * Inject HTML for each photographer to display profiles
              * */
             const container = document.getElementById('profiles')
-            allPhotographersInstances.forEach( photographer => {
+            allPhotographersInstances.forEach(photographer => {
                 container.innerHTML += `${photographer.profileSummary()}`;
             })
 
@@ -73,24 +73,25 @@ export const getData = fetch(dataFile)
              * */
 
             const tagListParents = document.getElementsByClassName('tagList');
-            Array.from(tagListParents).forEach( child => child.addEventListener('click', (event)=> {
+            Array.from(tagListParents).forEach(child => child.addEventListener('click', (event) => {
                 const target = event.target as HTMLTextAreaElement;
-                if(target.className == 'hashtag') {
+                if (target.className == 'hashtag') {
                     /**
                      * Filter photographers no matching tag and hide them
                      * */
-                    const photographersNoTagged = allPhotographersInstances.filter( photographer => !photographer.tags.includes(StringUtil.noHashAllLowCase(target.innerHTML)));
-                    photographersNoTagged.forEach( photographer => {
+                    const photographersNoTagged = allPhotographersInstances.filter(photographer => !photographer.tags.includes(StringUtil.noHashAllLowCase(target.innerHTML)));
+                    photographersNoTagged.forEach(photographer => {
                         document.getElementById(`${photographer.id}`).style.display = 'none';
                     })
                     /**
                      * Filter photographers matching tag and show them
                      * */
-                    const photographersTagged = allPhotographersInstances.filter( photographer => photographer.tags.includes(StringUtil.noHashAllLowCase(target.innerHTML)));
-                    photographersTagged.forEach( photographer => {
-                        document.getElementById(`${photographer.id}`).style.display = 'block'})
-                } }))
-
+                    const photographersTagged = allPhotographersInstances.filter(photographer => photographer.tags.includes(StringUtil.noHashAllLowCase(target.innerHTML)));
+                    photographersTagged.forEach(photographer => {
+                        document.getElementById(`${photographer.id}`).style.display = 'block'
+                    })
+                }
+            }))
 
 
         }

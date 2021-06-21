@@ -26,7 +26,7 @@ export class Photographer {
     return `
     <div id="${this.id}" class="components profile">
          <div>
-            <a class="profile__header" aria-label="visit profile" href="photographer.html?id=${this.id}">
+            <a class="profile__header"aria-label="aller vers la page de ${this.name}" href="photographer.html?id=${this.id}">
               <img class="profile__header__profilepicture profile-rounded" title="${this.name}" src="/assets/images/ProfilePicture/${this.portrait}" alt="">
               <h2 class="profile__header__name">${this.name}</h2>
             </a>
@@ -47,7 +47,7 @@ export class Photographer {
     private tagsList() {
         const tagsHTML = [];
         this.tags.forEach( tag => {
-            tagsHTML.push(`<li><button class="hashtag" title="${tag}">#${tag}</button></li>`);
+            tagsHTML.push(`<li><button class="hashtag" title="${tag}" aria-label="filtrer par tag ${tag}">#${tag}</button></li>`);
         })
         return tagsHTML.join('')
     }
@@ -109,7 +109,7 @@ export class Image extends Media {
         return `
     <div class="publication" data-date="${this.date}" data-likes="${this.likes}" data-id="${this.id}">
            <div class="publication__picture">
-            <img id="${this.id}" class="post" src="./assets/images/${this.photographerId}/${this.image}" alt="${this.altTxt}" role="img">
+            <img id="${this.id}" class="post" src="./assets/images/${this.photographerId}/${this.image}" alt="${this.altTxt}" role="img" aria-label="afficher ${this.altTxt}">
         </div>
         <div class="publication__description">
           <div id="title" class="publication__description__title caption">${this.altTxt}</div>
@@ -142,7 +142,7 @@ export class Video extends Media {
         return `
     <div class="publication" data-date="${this.date}" data-likes="${this.likes}" data-id="${this.id}">
         <div class="publication__picture">
-            <video id="${this.id}" class="post" src="./assets/images/${this.photographerId}/${this.video}" alt="${this.altTxt}" role="img" ></video>
+            <video id="${this.id}" class="post" src="./assets/images/${this.photographerId}/${this.video}" alt="${this.altTxt}" role="img" aria-label="afficher ${this.altTxt}"></video>
         </div>
         <div class="publication__description">
           <div id="title" class="publication__description__title caption">${this.altTxt}</div>

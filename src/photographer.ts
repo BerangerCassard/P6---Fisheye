@@ -148,13 +148,12 @@ export const getData = fetch(dataFile)
             for (i = 0; i < photographerMediasInstances.length; i++) {
                 if (photographerMediasInstances[i].image) {
                     modalContainer.innerHTML += `<div id="${photographerMediasInstances[i].id}" class="slides" style="display: none" data-rank="${i}">
-                  <div class="numberText"> ${i}/ ${photographerMediasInstances.length}</div>
-                  <img src="./assets/images/${paramId}/${photographerMediasInstances[i].image}" style="width:100%">
+                  <img src="./assets/images/${paramId}/${photographerMediasInstances[i].image}">
                 </div>`
                 } else if (photographerMediasInstances[i].video) {
                     modalContainer.innerHTML += `<div id="${photographerMediasInstances[i].id}" class="slides" style="display: none" data-rank="${i}">
                   <div class="numberText"> ${i}/ ${photographerMediasInstances.length}</div>
-                  <img src="./assets/images/${paramId}/${photographerMediasInstances[i].video}" style="width:100%">
+                  <img src="./assets/images/${paramId}/${photographerMediasInstances[i].video}">
                 </div>`
                 }
             }

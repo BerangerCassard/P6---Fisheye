@@ -18,20 +18,12 @@
     width: 90%;
     max-width: 1200px;
 
-    &__mySlides {
-      display: none;
-
-      &__media {
-        height: 80%;
-      }
-
-    }
-
     &__prev {
       color: $primary;
       cursor: pointer;
       position: absolute;
       top: 50%;
+      left: -125px;
       width: auto;
       padding: 16px;
       margin-top: -50px;
@@ -41,7 +33,7 @@
       border-radius: 0 3px 3px 0;
       user-select: none;
       -webkit-user-select: none;
-        
+
         &:hover {
           background-color: rgba(0, 0, 0, 0.8);
         }
@@ -54,6 +46,7 @@
       cursor: pointer;
       position: absolute;
       top: 50%;
+      right: -125px;
       width: auto;
       padding: 16px;
       margin-top: -50px;
@@ -77,6 +70,16 @@
       & #caption {
         font-size: 24px;
       }
+    }
+  }
+
+  .slides {
+    padding: 15px 15px;
+    & :first-child {
+      max-width: 100%;
+      height: auto;
+      width: auto;
+      box-shadow: 8px 8px 5px -5px rgba(0,0,0,0.35);
     }
   }
 

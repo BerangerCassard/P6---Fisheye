@@ -152,7 +152,7 @@ export const getData = fetch(dataFile)
                 </div>`
                 } else if (photographerMediasInstances[i].video) {
                     mediaViewer.innerHTML += `<div id="${photographerMediasInstances[i].id}" class="slides" style="display: none" data-rank="${i}">
-                  <video src="./assets/images/${paramId}/${photographerMediasInstances[i].video}"></video>
+                  <video controls src="./assets/images/${paramId}/${photographerMediasInstances[i].video}"></video>
                 </div>`
                 }
             }

@@ -94,17 +94,17 @@
             <p id="summary-likes" class="body-profile__essential__like"></p>
             <p id="summary-rate" class="body-profile__essential__rate">€/jour</p>
         </div>
-        <div class="body-profile__contact btn--primary"> Contactez-moi</div>
+        <div id="contact-responsive" class="body-profile__contact btn--primary"> Contactez-moi</div>
 
         <!-- contact modal form -->
         <div id="open-modal" class="modal">
-            <div class="modal__content">
-                <div class="modal__content__title">
+            <div class="modal--contact__content">
+                <div class="modal--contact__content__title">
                     <i id="close-modal" class="fas fa-times"></i>
                     <p>Contactez-moi</p>
                     <p id="contact-name"></p>
                 </div>
-                <div class="modal__content__body">
+                <div class="modal--contact__content__body">
                     <form
                             id="form"
                             method="get"
@@ -170,7 +170,9 @@
                                     name="message"
                                     id="message">
                         </div>
-                        <input id="validate-modal" class="btn--primary" type="submit" value="Envoyer">
+                        <div class="validate">
+                            <input id="validate-modal" class="btn--primary" type="submit" value="Envoyer">
+                        </div>
                     </form>
                 </div>
             </div>

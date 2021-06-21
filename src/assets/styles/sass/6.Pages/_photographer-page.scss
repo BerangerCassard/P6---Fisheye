@@ -169,13 +169,14 @@
   display: none;
   background-color: rgb(255, 255, 255, 0.9);
 
-  &__content {
+  &--contact__content {
+    flex-direction: column;
     display: flex;
     margin: 2% auto;
     width: 40%;
     height: 900px;
     border-radius: 5px;
-    //background-color: $secondary;
+    background-color: $secondary;
     //overflow: hidden;
 
     &__title {

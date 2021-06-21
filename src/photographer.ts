@@ -116,11 +116,13 @@ export const getData = fetch(dataFile)
             }))
 
             /**
-             * Open Modal
+             * Open Modal //TODO factorize listener to class
              */
             const modal = document.getElementById('open-modal');
             const contact = document.getElementById('contact-photographer'); //TODO contact or contactButton ?
-            contact.addEventListener('click', () => modal.style.display = 'block')
+            const contactResponsive = document.getElementById('contact-responsive');
+            contact.addEventListener('click', () => modal.style.display = 'block');
+            contactResponsive.addEventListener('click', () => modal.style.display = 'block')
 
             /**
              * Close Modal

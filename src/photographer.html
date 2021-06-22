@@ -97,8 +97,8 @@
         <div id="contact-responsive" class="body-profile__contact btn--primary"> Contactez-moi</div>
 
         <!-- contact modal form -->
-        <div id="open-modal" class="modal">
-            <div class="modal--contact__content">
+        <div id="open-modal" role="dialog" class="modal" aria-modal="true" aria-labelledby="modal-box">
+            <div id="modal-box" class="modal--contact__content">
                 <div class="modal--contact__content__title">
                     <i id="close-modal" class="fas fa-times"></i>
                     <p>Contactez-moi</p>
@@ -124,7 +124,9 @@
                                     class="form-data__input"
                                     type="text"
                                     name="first"
-                                    id="first">
+                                    id="first"
+                                    tabindex="0"
+                                >
                         </div>
 
                         <!-- Last name -->

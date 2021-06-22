@@ -141,7 +141,7 @@ export class Video extends Media {
     public publication() {
         return `
     <div class="publication" data-date="${this.date}" data-likes="${this.likes}" data-id="${this.id}">
-        <div class="publication__picture">
+        <div    class="publication__picture">
             <video id="${this.id}" class="post" src="./assets/images/${this.photographerId}/${this.video}" alt="${this.altTxt}" role="img" aria-label="afficher ${this.altTxt}"></video>
         </div>
         <div class="publication__description">

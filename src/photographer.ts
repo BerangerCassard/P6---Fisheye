@@ -118,17 +118,25 @@ export const getData = fetch(dataFile)
             /**
              * Open Modal //TODO factorize listener to class
              */
+                /**
+                 * FullScreen
+                 * */
             const modal = document.getElementById('open-modal');
-            const contact = document.getElementById('contact-photographer'); //TODO contact or contactButton ?
-            const contactResponsive = document.getElementById('contact-responsive');
+            const contact = document.getElementById('contact-photographer');
             contact.addEventListener('click', () => modal.style.display = 'block');
+
+                /**
+                 * Small Screen
+                 * */
+            const contactResponsive = document.getElementById('contact-responsive');
             contactResponsive.addEventListener('click', () => modal.style.display = 'block')
 
             /**
              * Close Modal
              */
             const closeModal = document.getElementById('close-modal');
-            closeModal.addEventListener('click', () => modal.style.display = 'none')
+            closeModal.addEventListener('click', () => modal.style.display = 'none');
+
 
             /**
              * Modal validation

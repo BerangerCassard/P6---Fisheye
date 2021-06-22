@@ -195,6 +195,17 @@ export const getData = fetch(dataFile)
              * When click on Image...
              */
 
+            function enableLightboxKeyCommands(event) {
+                if (event.keyCode == 27) {
+                    lightboxModal.style.display = 'none';
+                    document.removeEventListener("keydown", enableLightboxKeyCommands);
+                } else if (event.keyCode == 39) {
+                    nextSlide()
+                } else if (event.keyCode == 37) {
+                    previousSlide()
+                }
+            }
+
             function openLightbox(event) {
                 /**
                  * Open Modal Lightbox
@@ -216,6 +227,11 @@ export const getData = fetch(dataFile)
                  * */
                 const clickedMediaInstance = photographerMediasInstances.find(media => media.id == clickedMedia);
                 caption.innerHTML = `${clickedMediaInstance.altTxt}`
+
+                /**
+                 * Enable Accessibility commands
+                 * */
+                document.addEventListener("keydown", enableLightboxKeyCommands)
             }
 
             Array.from(images).forEach(publication => {
@@ -270,34 +286,16 @@ export const getData = fetch(dataFile)
             previous.addEventListener('click', previousSlide)
 
             /**
-             * Close Lightbox Modal
+             * Close Lightbox Modal and disable Accessibility commands
              */
             crossLightboxModal.addEventListener('click', () => {
                 lightboxModal.style.display = "none";
+                document.removeEventListener("keydown", enableLightboxKeyCommands);
 
                 Array.from(slides).forEach(slide => {
                     (slide as HTMLTextAreaElement).style.display = 'none';
                 })
             });
-
-            /**
-             * Accessibility
-             * */
-            document.addEventListener("keydown", (event)=> {
-                if(event.keyCode == 27){
-                    modal.style.display = 'none';
-                    lightboxModal.style.display = 'none';
-                }
-                else if(event.keyCode == 39) {
-                    nextSlide()
-                }
-
-                else if(event.keyCode == 37) {
-                    previousSlide()
-                }
-            })
-
-
         }
     )
 

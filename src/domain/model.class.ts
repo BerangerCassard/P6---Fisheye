@@ -52,12 +52,20 @@ export class Photographer {
         return tagsHTML.join('')
     }
 
+    private tagsListKeyHidden() {
+        const tagsHTML = [];
+        this.tags.forEach( tag => {
+            tagsHTML.push(`<li><button tabindex="-1" class="hashtag" title="${tag}" aria-label="filtrer par tag ${tag}">#${tag}</button></li>`);
+        })
+        return tagsHTML.join('')
+    }
+
     public profileHeaderAndSummary(sumLikes: number) {
         document.getElementById('profile-header').innerHTML = `${this.name}`;
         document.getElementById('profile-location').innerHTML = `${this.city}, ${this.country}`;
         document.getElementById('profile-quote').innerHTML = `${this.tagLine}`;
         document.getElementById('profile-picture').setAttribute('src', `./assets/images/ProfilePicture/${this.id}.jpg`);
-        document.getElementById('tagsList').innerHTML = `${this.tagsList()}`
+        document.getElementById('tagsList').innerHTML = `${this.tagsListKeyHidden()}`
         document.getElementById('summary-rate').innerHTML = `${this.price}€/jour`
         document.getElementById('summary-likes').innerHTML += sumLikes;
         document.getElementById('contact-name').innerHTML = `${this.name}`;

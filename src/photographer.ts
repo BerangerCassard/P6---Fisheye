@@ -4,10 +4,7 @@ import {Image} from "./domain/model.class";
 import {Video} from "./domain/model.class";
 import {StringUtil} from "./common/string.util";
 import "./assets/styles/sass/main.scss";
-//import { createRequire } from 'module';
 
-//const require = createRequire(import.meta.url)
-//const fetch = require("node-fetch");
 
 const dataFile = "./assets/data/photographers.json";
 
@@ -70,6 +67,9 @@ export const getData = fetch(dataFile)
             photographerMediasInstances.forEach(media => {
                 mediasContainer.innerHTML += media.publication();
             })
+            if(photographerMediasInstances.length % 3 == 2){
+                mediasContainer.innerHTML += `<div class="publication" style="width: 350px"></div>`
+            }
 
             /**
              * Filter //TODO review filter by title

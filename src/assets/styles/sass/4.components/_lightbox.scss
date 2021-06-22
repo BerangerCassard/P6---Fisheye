@@ -11,6 +11,8 @@
   background-color: black;
 
   &__content {
+    display: flex;
+    align-items: center;
     position: relative;
     background-color: #fefefe;
     margin: auto;

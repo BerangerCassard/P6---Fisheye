@@ -4,6 +4,7 @@ import {Image} from "./domain/model.class";
 import {Video} from "./domain/model.class";
 import {StringUtil} from "./common/string.util";
 import "./assets/styles/sass/main.scss";
+import {Key} from "readline";
 
 
 const dataFile = "./assets/data/photographers.json";
@@ -116,20 +117,28 @@ export const getData = fetch(dataFile)
             }))
 
             /**
-             * Open Modal //TODO factorize listener to class
+             * Open Modal and focus in//TODO factorize listener to class
              */
                 /**
                  * FullScreen
                  * */
             const modal = document.getElementById('open-modal');
             const contact = document.getElementById('contact-photographer');
-            contact.addEventListener('click', () => modal.style.display = 'block');
+            const firstName = document.getElementById('first');
+
+            contact.addEventListener('click', () => {
+                    modal.style.display = 'block';
+                    firstName.focus()
+                });
 
                 /**
                  * Small Screen
                  * */
             const contactResponsive = document.getElementById('contact-responsive');
-            contactResponsive.addEventListener('click', () => modal.style.display = 'block')
+            contactResponsive.addEventListener('click', () => {
+                modal.style.display = 'block';
+                firstName.focus()
+            })
 
             /**
              * Close Modal
@@ -177,8 +186,8 @@ export const getData = fetch(dataFile)
             /**
              * When click on Image...
              */
-            Array.from(images).forEach(publication => publication.addEventListener('click', (event) => {
 
+            function openLightbox(event) {
                 /**
                  * Open Modal Lightbox
                  * */
@@ -199,7 +208,16 @@ export const getData = fetch(dataFile)
                  * */
                 const clickedMediaInstance = photographerMediasInstances.find(media => media.id == clickedMedia);
                 caption.innerHTML = `${clickedMediaInstance.altTxt}`
-            }))
+            }
+
+            Array.from(images).forEach(publication => {
+                publication.addEventListener('click', openLightbox);
+                publication.addEventListener('keydown', (event)=> {
+                    if((event as KeyboardEvent).keyCode == 13) {
+                        openLightbox(event)
+                    }
+                })
+            })
 
             /**
              * Find Active Media and inject altTxt in caption
@@ -215,7 +233,7 @@ export const getData = fetch(dataFile)
              * Display next post if not last child and change caption
              * */
             const next = document.getElementById('next');
-            next.addEventListener('click', () => {
+            function nextSlide () {
                 let i;
                 for (i = 0; i < Array.from(slides).length; i++) {
                     if ((Array.from(slides)[i] as HTMLTextAreaElement).style.display == "block" && (Array.from(slides)[i] as HTMLTextAreaElement) !== mediaViewer.lastChild) {
@@ -224,13 +242,14 @@ export const getData = fetch(dataFile)
                     }
                 }
                 captionForActiveMedia()
-            })
+            }
+            next.addEventListener('click', nextSlide)
 
             /**
              * Display previous post if not first child
              * */
             const previous = document.getElementById('previous');
-            previous.addEventListener('click', () => {
+            function previousSlide(){
                 let i;
                 for (i = 0; i < Array.from(slides).length; i++) {
                     if ((Array.from(slides)[i] as HTMLTextAreaElement).style.display == "block" && (Array.from(slides)[i] as HTMLTextAreaElement) !== mediaViewer.firstChild) {
@@ -239,7 +258,8 @@ export const getData = fetch(dataFile)
                     }
                 }
                 captionForActiveMedia()
-            })
+            }
+            previous.addEventListener('click', previousSlide)
 
             /**
              * Close Lightbox Modal
@@ -252,29 +272,23 @@ export const getData = fetch(dataFile)
                 })
             });
 
+            /**
+             * Accessibility
+             * */
+            document.addEventListener("keydown", (event)=> {
+                if(event.keyCode == 27){
+                    modal.style.display = 'none';
+                    lightboxModal.style.display = 'none';
+                }
+                else if(event.keyCode == 39) {
+                    nextSlide()
+                }
 
-            /*        let slideIndex = 1;
+                else if(event.keyCode == 37) {
+                    previousSlide()
+                }
+            })
 
-                    function showSlides (n) {
-                        let slides = document.getElementsByClassName('slides');
-                        const caption = document.getElementById('caption');
-
-                        if (n > slides.length) {
-                            slideIndex = 1
-                        }
-                        else if( n < 1) {
-                            slideIndex = slides.length
-                        }
-
-                        let i;
-                        for(i=0; i<slides.length; i++) {
-                            (slides[i] as HTMLTextAreaElement).style.display = 'none'
-                        }
-
-                        (slides[slideIndex-1] as HTMLTextAreaElement).style.display = 'block';
-                    }
-
-                    showSlides(slideIndex);*/
 
         }
     )

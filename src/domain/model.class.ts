@@ -109,13 +109,13 @@ export class Image extends Media {
         return `
     <div class="publication" data-date="${this.date}" data-likes="${this.likes}" data-id="${this.id}">
            <div class="publication__picture">
-            <img id="${this.id}" class="post" src="./assets/images/${this.photographerId}/${this.image}" alt="${this.altTxt}" role="img" aria-label="afficher ${this.altTxt}">
+            <img tabindex="0" id="${this.id}" class="post" src="./assets/images/${this.photographerId}/${this.image}" alt="${this.altTxt}" role="img" aria-label="afficher ${this.altTxt}">
         </div>
         <div class="publication__description">
           <div id="title" class="publication__description__title caption">${this.altTxt}</div>
           <div class="publication__description__infos">
             <p id="price" class="publication__description__infos__price caption">${this.price}€</p>
-            <p id="like" class="publication__description__infos__like like">${this.likes}</p>
+            <p tabindex="0" id="like" class="publication__description__infos__like like">${this.likes}</p>
           </div>
         </div>  
     </div>
@@ -142,13 +142,13 @@ export class Video extends Media {
         return `
     <div class="publication" data-date="${this.date}" data-likes="${this.likes}" data-id="${this.id}">
         <div    class="publication__picture">
-            <video id="${this.id}" class="post" src="./assets/images/${this.photographerId}/${this.video}" alt="${this.altTxt}" role="img" aria-label="afficher ${this.altTxt}"></video>
+            <video tabindex="0" id="${this.id}" class="post" src="./assets/images/${this.photographerId}/${this.video}" alt="${this.altTxt}" role="img" aria-label="afficher ${this.altTxt}"></video>
         </div>
         <div class="publication__description">
           <div id="title" class="publication__description__title caption">${this.altTxt}</div>
           <div class="publication__description__infos">
             <p id="price" class="publication__description__infos__price caption">${this.price}€</p>
-            <p id="like" class="publication__description__infos__like like">${this.likes}</p>
+            <p tabindex="0" id="like" class="publication__description__infos__like like">${this.likes}</p>
           </div>
         </div>
     </div>`

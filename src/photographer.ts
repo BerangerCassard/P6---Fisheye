@@ -112,9 +112,17 @@ export const getData = fetch(dataFile)
              * Increment Likes
              */
             const likes = document.getElementsByClassName('publication__description__infos__like');
-            Array.from(likes).forEach(like => like.addEventListener('click', (event) => {
+            function incrementLikes(event) {
                 (event.target as HTMLTextAreaElement).innerHTML = `${parseInt((event.target as HTMLTextAreaElement).innerText) + 1}`
-            }))
+            }
+            Array.from(likes).forEach(like => {
+                like.addEventListener('click', incrementLikes);
+                like.addEventListener('keydown', (event)=> {
+                    if((event as KeyboardEvent).keyCode == 13) {
+                        incrementLikes(event);
+                    }
+                })
+            })
 
             /**
              * Open Modal and focus in//TODO factorize listener to class

@@ -1,0 +1,59 @@
+body {
+  font-family: 'DM Sans';
+
+  & a {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+  }
+
+  & p {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  //line-height: 13px;
+  margin: 5px 0;
+  }
+
+  & ul {
+    list-style-type: none;
+    margin: 3px 0;
+  }
+
+  & #hashtag {
+    font-weight: 500;
+    color : $primary;
+  }
+
+  & .location {
+    color: $primary;
+  }
+
+  & .quote {
+    color: $third;
+  }
+
+  & .rate {
+    color : #757575;
+  }
+
+  & h1 {
+    color: $primary;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 47px;
+    margin: 0;
+  }
+
+  & h2 {
+    color: $secondary;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 47px;
+    margin: 0 0;
+  }
+}

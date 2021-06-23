@@ -1,0 +1,62 @@
+.main {
+  margin: 25px auto;
+
+  &__title {
+    z-index: -1;
+    position: relative;
+    text-align: right;
+    right: 11%;
+    //left: 0;
+    top: 4px;
+    //margin-top: 22px;
+    margin: 22px auto 0 62%;
+    //width: 310px;
+  }
+
+  &__section {
+    margin-top: 70px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+
+  }
+}
+
+.profile {
+  text-align: center;
+  flex-basis: 33%;
+  margin: 25px 0;
+  //padding: 0 50px;
+
+  &__header {
+
+    &__profilepicture {
+      box-shadow: -9px 10px 45px -5px rgba(82,82,82,0.64);
+    }
+
+    &__name {
+      margin-top: 17px;
+    }
+  }
+
+  &__description {
+
+    &__city {
+      font-size: 13px;
+    }
+  }
+
+  &__hashtag {
+    display: flex;
+    gap: 1%;
+    padding-left: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    & li {
+      margin: 5px 0;
+    }
+  }
+}

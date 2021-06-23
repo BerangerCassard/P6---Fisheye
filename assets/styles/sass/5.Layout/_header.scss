@@ -1,0 +1,57 @@
+// header home
+
+.header-home {
+  display: flex;
+  left: 12%;
+  flex-direction: row;
+  position: absolute;
+  width: 88%;
+  // margin-top: 5px;
+
+  & > a {
+    z-index: 1;
+    position: absolute;
+    height: 50px;
+    width: 206px;
+  }
+
+  &__logo {
+    width: 200px;
+    position: relative;
+    left: -23px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    width: 48%;
+    justify-content: flex-end;
+
+    & ul {
+      display: flex;
+      gap: 1%;
+      width: 580px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-left: 0;
+
+      & li {
+        margin: 4px 0;
+      }
+    }
+  }
+}
+
+.header-profile {
+  padding: 26px 0;
+
+  & > a {
+    position: absolute;
+    height: 50px;
+    width: 206px;
+  }
+
+  &__logo {
+    width: 200px;
+  }
+}

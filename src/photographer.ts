@@ -127,6 +127,18 @@ export const getData = fetch(dataFile)
             /**
              * Open Modal and focus in//TODO factorize listener to class
              */
+
+                /**
+                 * Enable Key to Close Modal
+                 * */
+            function enableModalKeyClose (event) {
+                addEventListener('keydown', (event) => {
+                    if (event.keyCode == 27) {
+                        modal.style.display = 'none';
+                    }
+                })
+            }
+
                 /**
                  * FullScreen
                  * */
@@ -136,7 +148,8 @@ export const getData = fetch(dataFile)
 
             contact.addEventListener('click', () => {
                     modal.style.display = 'block';
-                    firstName.focus()
+                    firstName.focus();
+                    document.addEventListener('keydown', enableModalKeyClose)
                 });
 
                 /**
@@ -145,14 +158,16 @@ export const getData = fetch(dataFile)
             const contactResponsive = document.getElementById('contact-responsive');
             contactResponsive.addEventListener('click', () => {
                 modal.style.display = 'block';
-                firstName.focus()
+                firstName.focus();
+                document.addEventListener('keydown', enableModalKeyClose)
             })
 
             /**
              * Close Modal
              */
-            const closeModal = document.getElementById('close-modal');
-            closeModal.addEventListener('click', () => modal.style.display = 'none');
+            const modalCross = document.getElementById('close-modal');
+            modalCross.addEventListener('click', () => modal.style.display = 'none');
+            modalCross.removeEventListener('keydown', enableModalKeyClose);
 
 
             /**
@@ -195,16 +210,21 @@ export const getData = fetch(dataFile)
              * When click on Image...
              */
 
-            function enableLightboxKeyCommands(event) {
+                /**
+                 * Enable Key navigation, to close modal, next slide and previous slide
+                 * */
+            function enableLightboxKeyNavigation(event) {
                 if (event.keyCode == 27) {
                     lightboxModal.style.display = 'none';
-                    document.removeEventListener("keydown", enableLightboxKeyCommands);
+                    Array.from(slides).forEach(slide => {(slide as HTMLTextAreaElement).style.display = 'none'});
+                    document.removeEventListener("keydown", enableLightboxKeyNavigation);
                 } else if (event.keyCode == 39) {
                     nextSlide()
                 } else if (event.keyCode == 37) {
                     previousSlide()
                 }
             }
+             document.addEventListener("keydown", enableLightboxKeyNavigation);
 
             function openLightbox(event) {
                 /**
@@ -227,11 +247,6 @@ export const getData = fetch(dataFile)
                  * */
                 const clickedMediaInstance = photographerMediasInstances.find(media => media.id == clickedMedia);
                 caption.innerHTML = `${clickedMediaInstance.altTxt}`
-
-                /**
-                 * Enable Accessibility commands
-                 * */
-                document.addEventListener("keydown", enableLightboxKeyCommands)
             }
 
             Array.from(images).forEach(publication => {
@@ -290,7 +305,7 @@ export const getData = fetch(dataFile)
              */
             crossLightboxModal.addEventListener('click', () => {
                 lightboxModal.style.display = "none";
-                document.removeEventListener("keydown", enableLightboxKeyCommands);
+                document.removeEventListener("keydown", enableLightboxKeyNavigation);
 
                 Array.from(slides).forEach(slide => {
                     (slide as HTMLTextAreaElement).style.display = 'none';

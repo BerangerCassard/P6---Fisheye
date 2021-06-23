@@ -214,12 +214,12 @@ button {
 .modal__content__next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
-.modal__content__caption-container {
+.modal__content__caption {
   text-align: left;
   padding: 2px 16px;
   color: #901C1C;
 }
-.modal__content__caption-container #caption {
+.modal__content__caption #caption {
   font-size: 24px;
 }
 .modal__close {
@@ -706,7 +706,7 @@ body {
   }
   .publication__picture img {
     width: 335px;
-    height: 190px;
+/*    height: 190px;*/
   }
 }
 @media screen and (max-width: 439px) {

@@ -53,7 +53,7 @@
   }
 
   &__content {
-    margin: 10px 0;
+    margin: 10px 0 80px 0;
 
     &__order {
       display: flex;
@@ -126,11 +126,16 @@
     & img {
       border-radius: 5px;
     }
+
+    & video {
+      border-radius: 5px;
+    }
   }
 
   &__description {
     display: flex;
     justify-content: space-between;
+    width: 350px;
 
     &__title {
       font-size: 24px;
@@ -164,13 +169,15 @@
   display: none;
   background-color: rgb(255, 255, 255, 0.9);
 
-  &__content {
+  &--contact__content {
+    flex-direction: column;
+    display: flex;
     margin: 2% auto;
-    width: 669px;
+    width: 40%;
     height: 900px;
     border-radius: 5px;
     background-color: $secondary;
-    overflow: hidden;
+    //overflow: hidden;
 
     &__title {
       position: relative;

@@ -706,7 +706,7 @@ body {
   }
   .publication__picture img {
     width: 335px;
-    height: 190px;
+/*    height: 190px;*/
   }
 }
 @media screen and (max-width: 439px) {

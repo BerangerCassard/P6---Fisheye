@@ -178,8 +178,6 @@ export const getData = fetch(dataFile)
             const caption = document.getElementById('caption');
             let clickedMedia
 
-
-
             /**
              * Lightbox Modal
              */
@@ -209,11 +207,7 @@ export const getData = fetch(dataFile)
                  * Save Image ID and for each Slide test if ID is matching, if yes, display block
                  * */
                 clickedMedia = ((event.target as HTMLTextAreaElement).getAttribute('id'));
-                Array.from(slides).forEach(slide => {
-                    if (slide.id == clickedMedia) {
-                        (slide as HTMLTextAreaElement).style.display = 'block'
-                    }
-                })
+                Array.from(slides).forEach(slide => {if (slide.id == clickedMedia) {(slide as HTMLTextAreaElement).style.display = 'block'}})
 
                 /**
                  * Display caption
@@ -226,12 +220,7 @@ export const getData = fetch(dataFile)
 
             Array.from(images).forEach(publication => {
                 publication.addEventListener('click', openLightbox);
-                publication.addEventListener('keydown', (event)=> {
-                    if((event as KeyboardEvent).keyCode == 13) {
-                        openLightbox(event)
-                    }
-                })
-            })
+                publication.addEventListener('keydown', (event)=> {if((event as KeyboardEvent).keyCode == 13) {openLightbox(event)}})})
 
             /**
              * Find Active Media and inject altTxt in caption

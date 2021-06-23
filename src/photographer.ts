@@ -201,7 +201,7 @@ export const getData = fetch(dataFile)
                 /**
                  * Open Modal Lightbox
                  * */
-                lightboxModal.style.display = 'block';
+                lightboxModal.style.display = 'flex';
 
                 /**
                  * Save Image ID and for each Slide test if ID is matching, if yes, display block

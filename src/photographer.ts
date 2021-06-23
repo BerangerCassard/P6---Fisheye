@@ -4,7 +4,6 @@ import {Image} from "./domain/model.class";
 import {Video} from "./domain/model.class";
 import {StringUtil} from "./common/string.util";
 import "./assets/styles/sass/main.scss";
-import {Key} from "readline";
 
 
 const dataFile = "./assets/data/photographers.json";
@@ -62,7 +61,7 @@ export const getData = fetch(dataFile)
             photographerInstance.profileHeaderAndSummary(sumLikes)
 
             /**
-             * For each Media display publication
+             * For each Media display publication, if 2 publications on a line, display empty div
              */
             const mediasContainer = document.getElementById('publication-section');
             photographerMediasInstances.forEach(media => {
@@ -78,7 +77,6 @@ export const getData = fetch(dataFile)
             const likesFilter = document.getElementById('order-choice');
             likesFilter.addEventListener('change', (event) => {
                 mediasContainer.innerHTML = StringUtil.empty();
-
                 if ((event.target as HTMLTextAreaElement).value == 'likes') {
                     (photographerMediasInstances as unknown as Media[]).sort((a, b) => b.likes - a.likes); //TODO factor with common
                     photographerMediasInstances.forEach(media => mediasContainer.innerHTML += media.publication())
@@ -88,24 +86,7 @@ export const getData = fetch(dataFile)
                 } else if ((event.target as HTMLTextAreaElement).value == 'title') {
                     (photographerMediasInstances as unknown as Media[]).sort((a, b) => a.altTxt.localeCompare(b.altTxt)); //TODO factor with common
                     photographerMediasInstances.forEach(media => mediasContainer.innerHTML += media.publication())
-
                 }
-                /*            const target = (event.target as HTMLTextAreaElement).value;
-                            switch (target) {
-                                case 'likes':
-                                    mediasContainer.innerHTML = StringUtil.empty();
-                                    (photographerMediasInstances as unknown as Media[]).sort((a,b) => b.likes - a.likes ); //TODO try to make it works
-                                    photographerMediasInstances.forEach( media => mediasContainer.innerHTML += media.publication())
-
-                                case 'date':
-                                    mediasContainer.innerHTML = StringUtil.empty();
-                                    (photographerMediasInstances as unknown as Media[]).sort( (a,b) => (new Date(b.date) as any) - (new Date(a.date) as any) );
-                                    photographerMediasInstances.forEach( media => mediasContainer.innerHTML += media.publication())
-                                case 'title' :
-                                    mediasContainer.innerHTML = StringUtil.empty();
-                                    (photographerMediasInstances as unknown as Media[]).sort( (a,b) => a.altTxt.localeCompare(b.altTxt) );
-                                    photographerMediasInstances.forEach( media => mediasContainer.innerHTML += media.publication())
-                            }*/
             })
 
             /**
@@ -125,53 +106,44 @@ export const getData = fetch(dataFile)
             })
 
             /**
-             * Open Modal and focus in//TODO factorize listener to class
+             * Open Contact Modal and focus in//TODO factorize listener to class
              */
+            const modal = document.getElementById('open-modal');
+            const contact = document.getElementById('contact-photographer');
+            const contactButtons = document.getElementsByClassName('contact');
+            const firstName = document.getElementById('first');
 
                 /**
-                 * Enable Key to Close Modal
+                 * Enable Key to Close Modal, remove Key navigation, get the focus back to contact button
                  * */
             function enableModalKeyClose (event) {
                 addEventListener('keydown', (event) => {
+                    console.log('enable close contact')
                     if (event.keyCode == 27) {
                         modal.style.display = 'none';
+                        console.log('remove keydown');
+                        modalCross.removeEventListener('keydown', enableModalKeyClose);
+                        contact.focus();
                     }
                 })
             }
 
-                /**
-                 * FullScreen
-                 * */
-            const modal = document.getElementById('open-modal');
-            const contact = document.getElementById('contact-photographer');
-            const firstName = document.getElementById('first');
-
-            contact.addEventListener('click', () => {
-                    modal.style.display = 'block';
-                    firstName.focus();
-                    document.addEventListener('keydown', enableModalKeyClose)
-                });
-
-                /**
-                 * Small Screen
-                 * */
-            const contactResponsive = document.getElementById('contact-responsive');
-            contactResponsive.addEventListener('click', () => {
+            Array.from(contactButtons).forEach(button => button.addEventListener('click', () => {
                 modal.style.display = 'block';
                 firstName.focus();
                 document.addEventListener('keydown', enableModalKeyClose)
-            })
+            }))
+
 
             /**
-             * Close Modal
+             * Close Contact Modal on click
              */
             const modalCross = document.getElementById('close-modal');
             modalCross.addEventListener('click', () => modal.style.display = 'none');
-            modalCross.removeEventListener('keydown', enableModalKeyClose);
 
 
             /**
-             * Modal validation
+             * Contact Modal validation
              */
             const validateModal = document.getElementById('validate-modal');
             validateModal.addEventListener('click', (event) => {
@@ -206,12 +178,14 @@ export const getData = fetch(dataFile)
             const caption = document.getElementById('caption');
             let clickedMedia
 
+
+
             /**
-             * When click on Image...
+             * Lightbox Modal
              */
 
                 /**
-                 * Enable Key navigation, to close modal, next slide and previous slide
+                 * Enable Key navigation, to close lightbox modal, next slide and previous slide
                  * */
             function enableLightboxKeyNavigation(event) {
                 if (event.keyCode == 27) {
@@ -224,7 +198,6 @@ export const getData = fetch(dataFile)
                     previousSlide()
                 }
             }
-             document.addEventListener("keydown", enableLightboxKeyNavigation);
 
             function openLightbox(event) {
                 /**
@@ -246,7 +219,9 @@ export const getData = fetch(dataFile)
                  * Display caption
                  * */
                 const clickedMediaInstance = photographerMediasInstances.find(media => media.id == clickedMedia);
-                caption.innerHTML = `${clickedMediaInstance.altTxt}`
+                caption.innerHTML = `${clickedMediaInstance.altTxt}`;
+
+                document.addEventListener("keydown", enableLightboxKeyNavigation);
             }
 
             Array.from(images).forEach(publication => {

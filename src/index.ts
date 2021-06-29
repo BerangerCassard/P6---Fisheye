@@ -15,10 +15,10 @@ export const getData = fetch(dataFile)
             /**
              * Create photographers instances and push them into an Array
              * */
-            let allPhotographersInstances: Photographer[] = [];
-            let loadPhotographers = json.photographers.forEach(
+            const allPhotographersInstances: Photographer[] = [];
+            const loadPhotographers = json.photographers.forEach(
                 (photographer: { name: string; id: number; city: string; country: string; tags: string[]; tagline: string; price: number; portrait: string; }) => {
-                    let profile = new Photographer(photographer.name, photographer.id, photographer.city, photographer.country, photographer.price, photographer.portrait, photographer.tagline, photographer.tags);
+                    const profile = new Photographer(photographer.name, photographer.id, photographer.city, photographer.country, photographer.price, photographer.portrait, photographer.tagline, photographer.tags);
                     allPhotographersInstances.push(profile)
                 }
             )
@@ -26,8 +26,8 @@ export const getData = fetch(dataFile)
             /**
              * Filter Medias by images and videos
              * */
-            let images = json.media.filter((media: { image: any; }) => media.image);
-            let videos = json.media.filter(((media: { video: any; }) => media.video));
+            const images = json.media.filter((media: { image: any; }) => media.image);
+            const videos = json.media.filter(((media: { video: any; }) => media.video));
 
             /**
              * Create images and videos instances and push them into an Array
@@ -35,27 +35,27 @@ export const getData = fetch(dataFile)
             const imagesInstances: Media[] = [];
             images.forEach(
                 (image: { id: number; photographerId: number; date: string; altTxt: string; price: number; tags: string[]; likes: number; image: string; }) => {
-                    let imageMedia = new Image(image.id, image.photographerId, image.date, image.altTxt, image.price, image.tags, image.likes, image.image)
+                    const imageMedia = new Image(image.id, image.photographerId, image.date, image.altTxt, image.price, image.tags, image.likes, image.image)
                     imagesInstances.push(imageMedia)
                 }
             )
             const videosInstances: Media[] = [];
             videos.forEach(
                 (video: { id: number; photographerId: { id: number; }; date: string; altTxt: string; price: number; tags: string[]; likes: number; stringify: string; }) => {
-                    let videoMedia = new Video(video.id, video.photographerId.id, video.date, video.altTxt, video.price, video.tags, video.likes, video.stringify);
+                    const videoMedia = new Video(video.id, video.photographerId.id, video.date, video.altTxt, video.price, video.tags, video.likes, video.stringify);
                     videosInstances.push(videoMedia)
                 }
             )
             /**
              * Merge Videos and Images instances into a global Media Array
              * */
-            let AllMediasInstances: Media[] = imagesInstances.concat(videosInstances);
+            const AllMediasInstances: Media[] = imagesInstances.concat(videosInstances);
 
             /**
              * For each Photographer filter his owned Medias and save them into a medias variable
              * */
             allPhotographersInstances.forEach(photographer => {
-                let ownedMedias = AllMediasInstances.filter(media => media.photographerId = photographer.id);
+                const ownedMedias = AllMediasInstances.filter(media => media.photographerId = photographer.id);
                 photographer.medias = ownedMedias
 
             })

@@ -99,7 +99,7 @@ export const getData = fetch(dataFile)
             Array.from(likes).forEach(like => {
                 like.addEventListener('click', incrementLikes);
                 like.addEventListener('keydown', (event)=> {
-                    if((event as KeyboardEvent).keyCode == 13) {
+                    if((event as KeyboardEvent).code == "13") {
                         incrementLikes(event);
                     }
                 })
@@ -119,7 +119,7 @@ export const getData = fetch(dataFile)
             function enableModalKeyClose (event) {
                 addEventListener('keydown', (event) => {
                     console.log('enable close contact')
-                    if (event.keyCode == 27) {
+                    if (event.code == "27") {
                         modal.style.display = 'none';
                         console.log('remove keydown');
                         modalCross.removeEventListener('keydown', enableModalKeyClose);
@@ -147,12 +147,12 @@ modal.style.display = 'block';
              */
             const validateModal = document.getElementById('validate-modal');
             validateModal.addEventListener('click', (event) => {
+                modal.style.display = "none";
                 event.preventDefault();
                 console.log('firstName', (document.getElementById('first') as HTMLInputElement).value);
                 console.log('lastName', (document.getElementById('last') as HTMLInputElement).value);
                 console.log('mail', (document.getElementById('mail') as HTMLInputElement).value);
                 console.log('test');
-                //modal.style.display = "none";
             })
 
             /**
@@ -188,13 +188,13 @@ modal.style.display = 'block';
                  * Enable Key navigation, to close lightbox modal, next slide and previous slide
                  * */
             function enableLightboxKeyNavigation(event) {
-                if (event.keyCode == 27) {
+                if (event.code == '0x0001') {
                     lightboxModal.style.display = 'none';
                     Array.from(slides).forEach(slide => {(slide as HTMLTextAreaElement).style.display = 'none'});
                     document.removeEventListener("keydown", enableLightboxKeyNavigation);
-                } else if (event.keyCode == 39) {
+                } else if (event.code == '39') {
                     nextSlide()
-                } else if (event.keyCode == 37) {
+                } else if (event.code == '37') {
                     previousSlide()
                 }
             }

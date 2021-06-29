@@ -161,41 +161,43 @@
 
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 870px) {
 
-.body-profile__content__pictures {
-  flex-direction: column;
-}
-
-.publication__picture {
-  height: 190px;
-}
-
-#profile-header {
-  width: 100%;
-}
-}
-
-.header-profile {
-  padding : 26px 0 0 0;
-}
-
-.body-profile {
-
+.body-profile{
   &__resume {
     background-color: white;
+    padding: 0;
+    align-items: center;
 
     &__info {
       flex-basis: 70%;
 
       & #profile-location {
-        line-height: 15px;
+        font-size: 13px;
+        line-height: 17px;
+        margin: 0;
+      }
+
+      & #profile-quote {
+        font-size: 13px;
+        line-height: 17px;
+        margin: 6px 0;
+      }
+
+      &__hashtag {
+        font-size: 13px;
+        line-height: 17px;
+
+        & ul {
+          flex-wrap: wrap;
+        }
       }
 
       &__name {
 
         & #profile-header {
-          line-height: 60px;
+          font-size: 36px;
+          line-height: 47px;
         }
 
         & button {
@@ -203,27 +205,6 @@
         }
       }
     }
-  }
-
-  &__content {
-
-    margin-top: 30px;
-
-    &__order {
-      display: none;
-    }
-
-    &__pictures {
-
-
-      &__line {
-        flex-direction: column;
-      }
-    }
-  }
-
-  &__essential {
-    display: none;
   }
 
   &__contact {
@@ -238,69 +219,45 @@
     margin-right: auto;
     height: 35px;
   }
+
+  &__essential {
+    display: none;
+  }
 }
 
-.publication {
-  margin: 10px auto;
 }
 
-.profile-rounded {
-  height: 150px;
-  width: 150px;
-}
+@media screen and (max-width: 800px) {
 
-  .main__title {
-    right: 3%;
+  #profile-header {
+    width: 100%;
+  }
+
+  .header-profile {
+    padding: 26px 0 0 0;
   }
 
   .body-profile {
 
     & .header-profile {
-      padding : 26px 0 0 0;
-    }
-
-    &__resume {
-      padding: 0;
-      align-items: center;
-
-      &__info {
-
-        & #profile-location {
-          font-size: 13px;
-          line-height: 17px;
-          margin: 0;
-        }
-
-        & #profile-quote {
-          font-size: 13px;
-          line-height: 17px;
-          margin: 6px 0;
-        }
-
-        &__hashtag {
-          font-size: 13px;
-          line-height: 17px;
-
-          & ul {
-            flex-wrap: wrap;
-          }
-        }
-
-        &__name {
-
-          & #profile-header {
-            font-size: 36px;
-            line-height: 47px;
-          }
-        }
-      }
+      padding: 26px 0 0 0;
     }
 
     &__content {
-      //margin: 0;
+
+      margin-top: 30px;
+
+      &__order {
+        display: none;
+      }
 
       &__pictures {
-        margin: 0 0 100px ;
+        flex-direction: column;
+        margin: 0 0 100px;
+
+        &__line {
+          flex-direction: column;
+        }
       }
     }
 
@@ -336,9 +293,25 @@
         display: block;
       }
     }
-
-
   }
+
+  .publication {
+    margin: 10px auto;
+
+    &__picture {
+      height: 190px;
+    }
+  }
+
+  .profile-rounded {
+    height: 150px;
+    width: 150px;
+  }
+
+  .main__title {
+    right: 3%;
+  }
+
 
   .publication {
     margin: 0 auto;
@@ -360,6 +333,7 @@
       width: 335px;
     }
   }
+}
 
 @media screen and (max-width: 439px) {
 .body-profile {

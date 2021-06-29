@@ -129,7 +129,7 @@ export const getData = fetch(dataFile)
             }
 
             Array.from(contactButtons).forEach(button => button.addEventListener('click', () => {
-                modal.style.display = 'block';
+modal.style.display = 'block';
                 firstName.focus();
                 document.addEventListener('keydown', enableModalKeyClose)
             }))
@@ -151,6 +151,8 @@ export const getData = fetch(dataFile)
                 console.log('firstName', (document.getElementById('first') as HTMLInputElement).value);
                 console.log('lastName', (document.getElementById('last') as HTMLInputElement).value);
                 console.log('mail', (document.getElementById('mail') as HTMLInputElement).value);
+                console.log('test');
+                //modal.style.display = "none";
             })
 
             /**

@@ -48,7 +48,7 @@ module.exports = {
             ]
         })
     ],
-    mode: "development",
+    mode: "production",
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,

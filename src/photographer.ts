@@ -30,6 +30,12 @@ export const getData = fetch(dataFile)
             const photographerInstance = new Photographer(photographer.name, photographer.id, photographer.city, photographer.country, photographer.price, photographer.portrait, photographer.tagline, photographer.tags);
 
             /**
+             * Name page
+             * */
+            const pageName = document.getElementById('photographer')
+            pageName.innerHTML = `${photographerInstance.name}`
+
+            /**
              * Create a media Factory
              */
             const mediaFactory = new MediaFactory()
@@ -184,6 +190,8 @@ modal.style.display = 'block';
             const lightboxModal = document.getElementById('lightbox-modal');
             const crossLightboxModal = document.getElementById('close-lightbox-modal');
             const caption = document.getElementById('caption');
+            const next = document.getElementById('next');
+            const previous = document.getElementById('previous');
             let clickedMedia
 
             /**
@@ -205,11 +213,29 @@ modal.style.display = 'block';
                 }
             }
 
-            function openLightbox(event) {
+            next.addEventListener("keydown", (event)=> {
+                if(event.keyCode == 13) {
+                    nextSlide()
+                }
+            });
+
+            previous.addEventListener('keydown',(event)=> {
+                if(event.keyCode == 13) {
+                    previousSlide()
+                }
+            });
+
+
+        function openLightbox(event) {
                 /**
                  * Open Modal Lightbox
                  * */
                 lightboxModal.style.display = 'flex';
+
+                /**
+                 * Focus on Arrow
+                 */
+                previous.focus()
 
                 /**
                  * Save Image ID and for each Slide test if ID is matching, if yes, display block
@@ -243,7 +269,6 @@ modal.style.display = 'block';
             /**
              * Display next post if not last child and change caption
              * */
-            const next = document.getElementById('next');
             function nextSlide () {
                 let i;
                 for (i = 0; i < Array.from(slides).length; i++) {
@@ -259,7 +284,6 @@ modal.style.display = 'block';
             /**
              * Display previous post if not first child
              * */
-            const previous = document.getElementById('previous');
             function previousSlide(){
                 let i;
                 for (i = 0; i < Array.from(slides).length; i++) {

@@ -44,10 +44,10 @@ export class Photographer {
     </div>`
     }
 
-    private tagsList() {
+    public tagsList() {
         const tagsHTML = [];
         this.tags.forEach( tag => {
-            tagsHTML.push(`<li><button class="hashtag" title="${tag}" aria-label="filtrer par tag ${tag}">#${tag}</button></li>`);
+            tagsHTML.push(`<li><button class="hashtag" title="${tag}" aria-label="filtrer par">#${tag}</button></li>`);
         })
         return tagsHTML.join('')
     }
@@ -55,7 +55,7 @@ export class Photographer {
     private tagsListKeyHidden() {
         const tagsHTML = [];
         this.tags.forEach( tag => {
-            tagsHTML.push(`<li><button tabindex="-1" class="hashtag" title="${tag}" aria-label="filtrer par tag ${tag}">#${tag}</button></li>`);
+            tagsHTML.push(`<li><button tabindex="-1" class="hashtag" title="${tag}" aria-label="filtrer par">#${tag}</button></li>`);
         })
         return tagsHTML.join('')
     }
@@ -123,7 +123,7 @@ export class Image extends Media {
           <div id="title" class="publication__description__title caption">${this.altTxt}</div>
           <div class="publication__description__infos">
             <p id="price" class="publication__description__infos__price caption">${this.price}€</p>
-            <p tabindex="0" id="like" class="publication__description__infos__like like">${this.likes}</p>
+            <p tabindex="0" id="like" aria-label="nombre de likes" class="publication__description__infos__like like">${this.likes}</p>
           </div>
         </div>  
     </div>
@@ -156,7 +156,7 @@ export class Video extends Media {
           <div id="title" class="publication__description__title caption">${this.altTxt}</div>
           <div class="publication__description__infos">
             <p id="price" class="publication__description__infos__price caption">${this.price}€</p>
-            <p tabindex="0" id="like" class="publication__description__infos__like like">${this.likes}</p>
+                <p tabindex="0" id="like" aria-label="nombre de likes" class="publication__description__infos__like like">${this.likes}</p>
           </div>
         </div>
     </div>`

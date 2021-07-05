@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "keywords": [],
+  "homepage": "https://bronicles.github.io",
   "author": "",
   "license": "ISC",
   "devDependencies": {

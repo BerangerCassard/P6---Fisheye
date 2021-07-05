@@ -13,6 +13,12 @@ export const getData = fetch(dataFile)
     .then((json: any) => {
 
             /**
+             * Focus on logo when page loaded
+             * */
+            const logo = document.getElementById('logo');
+            logo.focus()
+
+            /**
              * Create photographers instances and push them into an Array
              * */
             const allPhotographersInstances: Photographer[] = [];

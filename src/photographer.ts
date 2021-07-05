@@ -13,6 +13,12 @@ export const getData = fetch(dataFile)
     .then((json: any) => {
 
             /**
+             * Focus on logo when page loaded
+             * */
+            const logo = document.getElementById('logo');
+            logo.focus()
+
+            /**
              * Find photographer according to id parameter
              */
             const paramId = new URL(window.location.href).searchParams.get('id');
@@ -99,7 +105,7 @@ export const getData = fetch(dataFile)
             Array.from(likes).forEach(like => {
                 like.addEventListener('click', incrementLikes);
                 like.addEventListener('keydown', (event)=> {
-                    if((event as KeyboardEvent).code == "13") {
+                    if((event as KeyboardEvent).keyCode== 13) {
                         incrementLikes(event);
                     }
                 })
@@ -119,7 +125,7 @@ export const getData = fetch(dataFile)
             function enableModalKeyClose (event) {
                 addEventListener('keydown', (event) => {
                     console.log('enable close contact')
-                    if (event.code == "27") {
+                    if (event.keyCode == 27) {
                         modal.style.display = 'none';
                         console.log('remove keydown');
                         modalCross.removeEventListener('keydown', enableModalKeyClose);
@@ -143,7 +149,7 @@ modal.style.display = 'block';
 
 
             /**
-             * Contact Modal validation
+             * Contact Modal validation : display information in console, close modal and focus on logo
              */
             const validateModal = document.getElementById('validate-modal');
             validateModal.addEventListener('click', (event) => {
@@ -152,7 +158,7 @@ modal.style.display = 'block';
                 console.log('firstName', (document.getElementById('first') as HTMLInputElement).value);
                 console.log('lastName', (document.getElementById('last') as HTMLInputElement).value);
                 console.log('mail', (document.getElementById('mail') as HTMLInputElement).value);
-                console.log('test');
+                logo.focus()
             })
 
             /**
@@ -188,13 +194,13 @@ modal.style.display = 'block';
                  * Enable Key navigation, to close lightbox modal, next slide and previous slide
                  * */
             function enableLightboxKeyNavigation(event) {
-                if (event.code == '0x0001') {
+                if (event.keyCode == 27) {
                     lightboxModal.style.display = 'none';
                     Array.from(slides).forEach(slide => {(slide as HTMLTextAreaElement).style.display = 'none'});
                     document.removeEventListener("keydown", enableLightboxKeyNavigation);
-                } else if (event.code == '39') {
+                } else if (event.keyCode == 39) {
                     nextSlide()
-                } else if (event.code == '37') {
+                } else if (event.keyCode == 37) {
                     previousSlide()
                 }
             }

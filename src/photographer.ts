@@ -12,10 +12,31 @@ export const getData = fetch(dataFile)
     .then((res: any) => res.json())
     .then((json: any) => {
 
-            /**
+        const logo = document.getElementById('logo');
+        const slides = document.getElementsByClassName('slides')
+        const images = document.getElementsByClassName('post');
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const crossLightboxModal = document.getElementById('close-lightbox-modal');
+        const caption = document.getElementById('caption');
+        const next = document.getElementById('next');
+        const previous = document.getElementById('previous');
+        const pageName = document.getElementById('photographer');
+        const mediasContainer = document.getElementById('publication-section');
+        const likesFilter = document.getElementById('order-choice');
+        const likes = document.getElementsByClassName('publication__description__infos__like');
+        const modalCross = document.getElementById('close-modal');
+        const validateModal = document.getElementById('validate-modal');
+        const modal = document.getElementById('open-modal');
+        const contact = document.getElementById('contact-photographer');
+        const contactButtons = document.getElementsByClassName('contact');
+        const firstName = document.getElementById('first');
+        const mediaViewer = document.getElementById('media-viewer');
+        let clickedMedia
+
+
+        /**
              * Focus on logo when page loaded
              * */
-            const logo = document.getElementById('logo');
             logo.focus()
 
             /**
@@ -32,7 +53,6 @@ export const getData = fetch(dataFile)
             /**
              * Name page
              * */
-            const pageName = document.getElementById('photographer')
             pageName.innerHTML = `${photographerInstance.name}`
 
             /**
@@ -75,7 +95,6 @@ export const getData = fetch(dataFile)
             /**
              * For each Media display publication, if 2 publications on a line, display empty div
              */
-            const mediasContainer = document.getElementById('publication-section');
             photographerMediasInstances.forEach(media => {
                 mediasContainer.innerHTML += media.publication();
             })
@@ -84,47 +103,27 @@ export const getData = fetch(dataFile)
             }
 
             /**
-             * Filter //TODO review filter by title
-             */
-            const likesFilter = document.getElementById('order-choice');
-            likesFilter.addEventListener('change', (event) => {
-                mediasContainer.innerHTML = StringUtil.empty();
-                if ((event.target as HTMLTextAreaElement).value == 'likes') {
-                    (photographerMediasInstances as unknown as Media[]).sort((a, b) => b.likes - a.likes); //TODO factor with common
-                    photographerMediasInstances.forEach(media => mediasContainer.innerHTML += media.publication())
-                } else if ((event.target as HTMLTextAreaElement).value == 'date') {
-                    (photographerMediasInstances as unknown as Media[]).sort((a, b) => (new Date(b.date) as any) - (new Date(a.date) as any)); //TODO factor with common
-                    photographerMediasInstances.forEach(media => mediasContainer.innerHTML += media.publication())
-                } else if ((event.target as HTMLTextAreaElement).value == 'title') {
-                    (photographerMediasInstances as unknown as Media[]).sort((a, b) => a.altTxt.localeCompare(b.altTxt)); //TODO factor with common
-                    photographerMediasInstances.forEach(media => mediasContainer.innerHTML += media.publication())
-                }
-            })
-
-            /**
              * Increment Likes
              */
-            const likes = document.getElementsByClassName('publication__description__infos__like');
             function incrementLikes(event) {
                 (event.target as HTMLTextAreaElement).innerHTML = `${parseInt((event.target as HTMLTextAreaElement).innerText) + 1}`
             }
-            Array.from(likes).forEach(like => {
-                like.addEventListener('click', incrementLikes);
-                like.addEventListener('keydown', (event)=> {
-                    if((event as KeyboardEvent).keyCode== 13) {
-                        incrementLikes(event);
-                    }
+
+            function enableLikeEventListener() {
+                Array.from(likes).forEach(like => {
+                    like.addEventListener('click', incrementLikes);
+                    like.addEventListener('keydown', (event)=> {
+                        if((event as KeyboardEvent).keyCode== 13) {
+                            incrementLikes(event);
+                        }
+                    })
                 })
-            })
+            }
+            enableLikeEventListener();
 
             /**
              * Open Contact Modal and focus in//TODO factorize listener to class
              */
-            const modal = document.getElementById('open-modal');
-            const contact = document.getElementById('contact-photographer');
-            const contactButtons = document.getElementsByClassName('contact');
-            const firstName = document.getElementById('first');
-
                 /**
                  * Enable Key to Close Modal, remove Key navigation, get the focus back to contact button
                  * */
@@ -139,25 +138,23 @@ export const getData = fetch(dataFile)
                     }
                 })
             }
-
-            Array.from(contactButtons).forEach(button => button.addEventListener('click', () => {
-modal.style.display = 'block';
-                firstName.focus();
-                document.addEventListener('keydown', enableModalKeyClose)
-            }))
-
+            function enableContactEventListener () {
+                Array.from(contactButtons).forEach(button => button.addEventListener('click', () => {
+                    modal.style.display = 'block';
+                    firstName.focus();
+                    document.addEventListener('keydown', enableModalKeyClose)
+                }))
+            }
+            enableContactEventListener()
 
             /**
              * Close Contact Modal on click
              */
-            const modalCross = document.getElementById('close-modal');
             modalCross.addEventListener('click', () => modal.style.display = 'none');
-
 
             /**
              * Contact Modal validation : display information in console, close modal and focus on logo
              */
-            const validateModal = document.getElementById('validate-modal');
             validateModal.addEventListener('click', (event) => {
                 modal.style.display = "none";
                 event.preventDefault();
@@ -171,7 +168,6 @@ modal.style.display = 'block';
              * Create slides HTML for each Media, Photo or Video
              * */
                 //TODO make the page number start at 1
-            const mediaViewer = document.getElementById('media-viewer');
             let i
             for (i = 0; i < photographerMediasInstances.length; i++) {
                 if (photographerMediasInstances[i].image) {
@@ -185,19 +181,9 @@ modal.style.display = 'block';
                 }
             }
 
-            const slides = document.getElementsByClassName('slides')
-            const images = document.getElementsByClassName('post');
-            const lightboxModal = document.getElementById('lightbox-modal');
-            const crossLightboxModal = document.getElementById('close-lightbox-modal');
-            const caption = document.getElementById('caption');
-            const next = document.getElementById('next');
-            const previous = document.getElementById('previous');
-            let clickedMedia
-
             /**
              * Lightbox Modal
              */
-
                 /**
                  * Enable Key navigation, to close lightbox modal, next slide and previous slide
                  * */
@@ -224,7 +210,6 @@ modal.style.display = 'block';
                     previousSlide()
                 }
             });
-
 
         function openLightbox(event) {
                 /**
@@ -307,6 +292,27 @@ modal.style.display = 'block';
                     (slide as HTMLTextAreaElement).style.display = 'none';
                 })
             });
+
+        /**
+         * Filter //TODO review filter by title
+         */
+        likesFilter.addEventListener('change', (event) => {
+            mediasContainer.innerHTML = StringUtil.empty();
+            if ((event.target as HTMLTextAreaElement).value == 'likes') {
+                (photographerMediasInstances as unknown as Media[]).sort((a, b) => b.likes - a.likes); //TODO factor with common
+                photographerMediasInstances.forEach(media => mediasContainer.innerHTML += media.publication());
+                enableLikeEventListener();
+            } else if ((event.target as HTMLTextAreaElement).value == 'date') {
+                (photographerMediasInstances as unknown as Media[]).sort((a, b) => (new Date(b.date) as any) - (new Date(a.date) as any)); //TODO factor with common
+                photographerMediasInstances.forEach(media => mediasContainer.innerHTML += media.publication());
+                enableLikeEventListener();
+            } else if ((event.target as HTMLTextAreaElement).value == 'title') {
+                (photographerMediasInstances as unknown as Media[]).sort((a, b) => a.altTxt.localeCompare(b.altTxt)); //TODO factor with common
+                photographerMediasInstances.forEach(media => mediasContainer.innerHTML += media.publication());
+                enableLikeEventListener();
+            }
+        })
+
         }
     )
 

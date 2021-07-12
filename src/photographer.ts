@@ -32,7 +32,7 @@ export const getData = fetch(dataFile)
         const firstName = document.getElementById('first');
         const mediaViewer = document.getElementById('media-viewer');
         let clickedMedia
-
+        let clickedMediaSelector
 
         /**
              * Focus on logo when page loaded
@@ -167,19 +167,25 @@ export const getData = fetch(dataFile)
             /**
              * Create slides HTML for each Media, Photo or Video
              * */
-                //TODO make the page number start at 1
-            let i
-            for (i = 0; i < photographerMediasInstances.length; i++) {
-                if (photographerMediasInstances[i].image) {
-                    mediaViewer.innerHTML += `<div id="${photographerMediasInstances[i].id}" class="slides" style="display: none" data-rank="${i}">
+
+            function createSlidesForLightbox() {
+                mediaViewer.innerHTML = '';
+                let i
+                for (i = 0; i < photographerMediasInstances.length; i++) {
+                    if (photographerMediasInstances[i].image) {
+                        mediaViewer.innerHTML += `<div id="${photographerMediasInstances[i].id}" class="slides" style="display: none" data-rank="${i}">
                   <img src="./assets/images/${paramId}/${photographerMediasInstances[i].image}">
                 </div>`
-                } else if (photographerMediasInstances[i].video) {
-                    mediaViewer.innerHTML += `<div id="${photographerMediasInstances[i].id}" class="slides" style="display: none" data-rank="${i}">
+                    } else if (photographerMediasInstances[i].video) {
+                        mediaViewer.innerHTML += `<div id="${photographerMediasInstances[i].id}" class="slides" style="display: none" data-rank="${i}">
                   <video controls src="./assets/images/${paramId}/${photographerMediasInstances[i].video}"></video>
                 </div>`
+                    }
                 }
             }
+
+            createSlidesForLightbox()
+
 
             /**
              * Lightbox Modal
@@ -192,6 +198,8 @@ export const getData = fetch(dataFile)
                     lightboxModal.style.display = 'none';
                     Array.from(slides).forEach(slide => {(slide as HTMLTextAreaElement).style.display = 'none'});
                     document.removeEventListener("keydown", enableLightboxKeyNavigation);
+                    console.log('clicked media', clickedMediaSelector)
+                    clickedMediaSelector.focus();
                 } else if (event.keyCode == 39) {
                     nextSlide()
                 } else if (event.keyCode == 37) {
@@ -226,6 +234,7 @@ export const getData = fetch(dataFile)
                  * Save Image ID and for each Slide test if ID is matching, if yes, display block
                  * */
                 clickedMedia = ((event.target as HTMLTextAreaElement).getAttribute('id'));
+                clickedMediaSelector = document.getElementById(`${clickedMedia}`);
                 Array.from(slides).forEach(slide => {if (slide.id == clickedMedia) {(slide as HTMLTextAreaElement).style.display = 'block'}})
 
                 /**
@@ -237,14 +246,20 @@ export const getData = fetch(dataFile)
                 document.addEventListener("keydown", enableLightboxKeyNavigation);
             }
 
-            Array.from(images).forEach(publication => {
-                publication.addEventListener('click', openLightbox);
-                publication.addEventListener('keydown', (event)=> {if((event as KeyboardEvent).keyCode == 13) {openLightbox(event)}})})
+            function enableLightboxEventListener () {
+                Array.from(images).forEach(publication => {
+                    publication.addEventListener('click', openLightbox);
+                    publication.addEventListener('keydown', (event)=> {if((event as KeyboardEvent).keyCode == 13) {openLightbox(event)}})})
+            }
+
+            enableLightboxEventListener()
 
             /**
              * Find Active Media and inject altTxt in caption
              * */
-            function captionForActiveMedia() {
+
+
+        function captionForActiveMedia() {
                 const openMedia = Array.from(slides).find(media => (media as HTMLTextAreaElement).style.display == 'block');
                 const openMediaID = openMedia.getAttribute('id');
                 const openMediaInstance = photographerMediasInstances.find(media => media.id == openMediaID);
@@ -302,14 +317,20 @@ export const getData = fetch(dataFile)
                 (photographerMediasInstances as unknown as Media[]).sort((a, b) => b.likes - a.likes); //TODO factor with common
                 photographerMediasInstances.forEach(media => mediasContainer.innerHTML += media.publication());
                 enableLikeEventListener();
+                createSlidesForLightbox();
+                enableLightboxEventListener();
             } else if ((event.target as HTMLTextAreaElement).value == 'date') {
                 (photographerMediasInstances as unknown as Media[]).sort((a, b) => (new Date(b.date) as any) - (new Date(a.date) as any)); //TODO factor with common
                 photographerMediasInstances.forEach(media => mediasContainer.innerHTML += media.publication());
                 enableLikeEventListener();
+                createSlidesForLightbox();
+                enableLightboxEventListener()
             } else if ((event.target as HTMLTextAreaElement).value == 'title') {
                 (photographerMediasInstances as unknown as Media[]).sort((a, b) => a.altTxt.localeCompare(b.altTxt)); //TODO factor with common
                 photographerMediasInstances.forEach(media => mediasContainer.innerHTML += media.publication());
                 enableLikeEventListener();
+                createSlidesForLightbox();
+                enableLightboxEventListener();
             }
         })
 

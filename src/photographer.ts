@@ -240,6 +240,7 @@ export const getData = fetch(dataFile)
                  * */
                 const clickedMediaInstance = photographerMediasInstances.find(media => media.id == clickedMedia);
                 caption.innerHTML = `${clickedMediaInstance.altTxt}`;
+                caption.setAttribute('aria-label', `${clickedMediaInstance.altTxt}`)
 
                 document.addEventListener("keydown", enableLightboxKeyNavigation);
             }
@@ -262,6 +263,7 @@ export const getData = fetch(dataFile)
                 const openMediaID = openMedia.getAttribute('id');
                 const openMediaInstance = photographerMediasInstances.find(media => media.id == openMediaID);
                 caption.innerHTML = `${openMediaInstance.altTxt}`
+                caption.setAttribute('aria-label', `${openMediaInstance.altTxt}`)
             }
 
             /**
@@ -275,7 +277,7 @@ export const getData = fetch(dataFile)
                         (Array.from(slides)[++i] as HTMLTextAreaElement).style.display = "block"
                     }
                 }
-                captionForActiveMedia()
+                captionForActiveMedia();
             }
             next.addEventListener('click', nextSlide)
 

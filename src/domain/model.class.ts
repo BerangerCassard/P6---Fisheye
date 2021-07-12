@@ -47,7 +47,7 @@ export class Photographer {
     public tagsList() {
         const tagsHTML = [];
         this.tags.forEach( tag => {
-            tagsHTML.push(`<li><button class="hashtag" title="${tag}" aria-label="filtrer par">#${tag}</button></li>`);
+            tagsHTML.push(`<li><button class="hashtag" title="${tag}" aria-label="filtrer par ${tag}">#${tag}</button></li>`);
         })
         return tagsHTML.join('')
     }
@@ -55,7 +55,7 @@ export class Photographer {
     private tagsListKeyHidden() {
         const tagsHTML = [];
         this.tags.forEach( tag => {
-            tagsHTML.push(`<li><button tabindex="-1" class="hashtag" title="${tag}" aria-label="filtrer par">#${tag}</button></li>`);
+            tagsHTML.push(`<li><button tabindex="-1" class="hashtag" title="${tag}" aria-label="filtrer par ${tag}">#${tag}</button></li>`);
         })
         return tagsHTML.join('')
     }

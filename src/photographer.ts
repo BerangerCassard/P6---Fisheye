@@ -129,7 +129,6 @@ export const getData = fetch(dataFile)
                  * */
             function enableModalKeyClose (event) {
                 addEventListener('keydown', (event) => {
-                    console.log('enable close contact')
                     if (event.keyCode == 27) {
                         modal.style.display = 'none';
                         console.log('remove keydown');
@@ -161,7 +160,7 @@ export const getData = fetch(dataFile)
                 console.log('firstName', (document.getElementById('first') as HTMLInputElement).value);
                 console.log('lastName', (document.getElementById('last') as HTMLInputElement).value);
                 console.log('mail', (document.getElementById('mail') as HTMLInputElement).value);
-                logo.focus()
+                contact.focus()
             })
 
             /**
@@ -198,7 +197,6 @@ export const getData = fetch(dataFile)
                     lightboxModal.style.display = 'none';
                     Array.from(slides).forEach(slide => {(slide as HTMLTextAreaElement).style.display = 'none'});
                     document.removeEventListener("keydown", enableLightboxKeyNavigation);
-                    console.log('clicked media', clickedMediaSelector)
                     clickedMediaSelector.focus();
                 } else if (event.keyCode == 39) {
                     nextSlide()

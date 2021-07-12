@@ -123,7 +123,7 @@ export class Image extends Media {
           <div id="title" class="publication__description__title caption">${this.altTxt}</div>
           <div class="publication__description__infos">
             <p id="price" class="publication__description__infos__price caption">${this.price}€</p>
-            <p tabindex="0" id="like" aria-label="nombre de likes" title="likes" class="publication__description__infos__like like">${this.likes}</p>
+            <p tabindex="0" id="like" aria-label="nombre de likes" title="likes" class="publication__description__infos__like like">${this.likes}<span>likes</span></p>
           </div>
         </div>  
     </div>
@@ -156,7 +156,7 @@ export class Video extends Media {
           <div id="title" class="publication__description__title caption">${this.altTxt}</div>
           <div class="publication__description__infos">
             <p id="price" class="publication__description__infos__price caption">${this.price}€</p>
-                <p tabindex="0" id="like" aria-label="nombre de likes" title="likes" class="publication__description__infos__like like">${this.likes}</p>
+                <p tabindex="0" id="like" aria-label="nombre de likes" title="likes" class="publication__description__infos__like like">${this.likes}<span>likes</span></p>
           </div>
         </div>
     </div>`

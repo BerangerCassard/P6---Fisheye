@@ -29,6 +29,11 @@
     margin-left: 6px;
     cursor: pointer;
   }
+
+  & span {
+    position: absolute;
+    left : -1000px
+  }
 }
 
 // #3 post description (CONFLICT re-check priority order cause it doesn't display)

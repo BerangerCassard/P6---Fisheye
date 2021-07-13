@@ -119,6 +119,7 @@
 
 .publication {
   width: fit-content;
+  max-width: 100%;
   margin: 15px 0;
 
   &__picture {
@@ -136,6 +137,7 @@
     display: flex;
     justify-content: space-between;
     width: 350px;
+    max-width: 100%;
 
     &__title {
       font-size: 24px;

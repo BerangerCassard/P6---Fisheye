@@ -31,6 +31,7 @@ export const getData = fetch(dataFile)
         const contactButtons = document.getElementsByClassName('contact');
         const firstName = document.getElementById('first');
         const mediaViewer = document.getElementById('media-viewer');
+        const body = document.getElementById('body');
         let clickedMedia
         let clickedMediaSelector
 
@@ -131,7 +132,7 @@ export const getData = fetch(dataFile)
                 addEventListener('keydown', (event) => {
                     if (event.keyCode == 27) {
                         modal.style.display = 'none';
-                        console.log('remove keydown');
+                        body.style.overflow = "revert";
                         modalCross.removeEventListener('keydown', enableModalKeyClose);
                         contact.focus();
                     }
@@ -141,6 +142,7 @@ export const getData = fetch(dataFile)
                 Array.from(contactButtons).forEach(button => button.addEventListener('click', () => {
                     modal.style.display = 'block';
                     firstName.focus();
+                    body.style.overflow = 'hidden';
                     document.addEventListener('keydown', enableModalKeyClose)
                 }))
             }
@@ -149,7 +151,10 @@ export const getData = fetch(dataFile)
             /**
              * Close Contact Modal on click
              */
-            modalCross.addEventListener('click', () => modal.style.display = 'none');
+            modalCross.addEventListener('click', () => {
+                modal.style.display = 'none';
+                body.style.overflow = "revert";
+            });
 
             /**
              * Contact Modal validation : display information in console, close modal and focus on logo
@@ -195,6 +200,7 @@ export const getData = fetch(dataFile)
             function enableLightboxKeyNavigation(event) {
                 if (event.keyCode == 27) {
                     lightboxModal.style.display = 'none';
+                    body.style.overflow = 'revert';
                     Array.from(slides).forEach(slide => {(slide as HTMLTextAreaElement).style.display = 'none'});
                     document.removeEventListener("keydown", enableLightboxKeyNavigation);
                     clickedMediaSelector.focus();
@@ -222,6 +228,7 @@ export const getData = fetch(dataFile)
                  * Open Modal Lightbox
                  * */
                 lightboxModal.style.display = 'flex';
+                body.style.overflow = 'hidden';
 
                 /**
                  * Focus on Arrow
@@ -301,6 +308,7 @@ export const getData = fetch(dataFile)
              */
             crossLightboxModal.addEventListener('click', () => {
                 lightboxModal.style.display = "none";
+                body.style.overflow = 'revert';
                 document.removeEventListener("keydown", enableLightboxKeyNavigation);
 
                 Array.from(slides).forEach(slide => {

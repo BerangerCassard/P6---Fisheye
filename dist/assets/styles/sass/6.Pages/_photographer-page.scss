@@ -178,19 +178,22 @@
     flex-direction: column;
     display: flex;
     margin: 2% auto;
-    width: 40%;
-    height: 900px;
+    width: 50%;
+    height: fit-content;
     border-radius: 5px;
     background-color: $secondary;
+    box-shadow: -5px 2px 17px 0px rgba(0,0,0,0.75);
+
     //overflow: hidden;
 
     &__title {
       position: relative;
-      padding: 0 3%;
+      padding: 0 20px;
+      margin-top: 6px;
 
       & i {
         position: absolute;
-        right: 3%;
+        right: 20px;
         top : 5%;
         color: white;
         font-size: xxx-large;
@@ -200,12 +203,11 @@
       & p {
       font-size: 64px;
       font-weight: normal;
-      line-height: 4rem;
       }
     }
 
     &__body {
-      padding: 15px 3%;
+      padding: 15px 20px;
 
       & .btn--primary {
         margin-top: 21px;

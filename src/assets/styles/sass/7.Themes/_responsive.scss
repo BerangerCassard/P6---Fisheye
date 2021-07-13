@@ -312,7 +312,6 @@
     right: 0%;
   }
 
-
   .publication {
     margin: 0 auto;
 
@@ -336,6 +335,11 @@
 }
 
 @media screen and (max-width: 439px) {
+
+.modal--contact__content {
+  width: 70%;
+}
+
 .body-profile {
 
   &__resume {
@@ -383,6 +387,10 @@
   .validate {
     display: flex;
     justify-content: center;
+  }
+
+  .btn--primary {
+    height: 40px;
   }
 
   .form-data__input {

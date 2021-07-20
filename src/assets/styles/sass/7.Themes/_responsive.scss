@@ -234,6 +234,7 @@
 @media screen and (max-width: 800px) {
 
   .modal__close {
+    top: 28px;
     font-size: 10px;
   }
 
@@ -243,6 +244,9 @@
     }
     &__next {
       font-size: 10px;
+    }
+    #caption {
+      font-size: 12px;
     }
   }
 

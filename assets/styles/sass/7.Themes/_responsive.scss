@@ -78,13 +78,9 @@
      flex-direction: column;
     }
 }}
-.profile-rounded{
-  width: 230px !important;
-  height: 230px !important;
-}
+
 
 @media screen and (max-width: 567px) {
-
 .main {
 
   &__section {
@@ -373,7 +369,6 @@
     margin: 22px auto 0 46%;
   }
 }
-
 
 // Contact Modal
 

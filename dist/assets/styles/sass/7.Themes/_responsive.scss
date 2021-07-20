@@ -290,7 +290,7 @@
       }
 
       &__pictures {
-        flex-direction: column;
+        flex-direction: row;
         margin: 0 0 100px;
 
         &__line {
@@ -351,6 +351,7 @@
   }
 
   .publication {
+    width: 300px;
     margin: 0 auto;
 
     &__picture {
@@ -373,6 +374,10 @@
 }
 
 @media screen and (max-width: 439px) {
+
+  #profile-picture {
+    height: 173px;
+  }
 
 .modal--contact__content {
   width: 70%;

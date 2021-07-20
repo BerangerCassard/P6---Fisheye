@@ -182,9 +182,15 @@
 
 }
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 910px) {
 
 .body-profile{
+
+  &__content {
+    &__pictures {
+      flex-direction: row;
+    }
+  }
   &__resume {
     background-color: white;
     padding: 0;
@@ -248,7 +254,7 @@
 
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 870px) {
 
   .modal__close {
     top: 28px;

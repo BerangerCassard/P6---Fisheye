@@ -79,8 +79,8 @@
     }
 }}
 .profile-rounded{
-  width: 230px !important;
-  height: 230px !important;
+  width: 230px;
+  height: 230px;
 }
 
 @media screen and (max-width: 567px) {
@@ -325,8 +325,8 @@
   }
 
   .profile-rounded {
-    height: 150px;
-    width: 150px;
+/*    height: 150px;
+    width: 150px;*/
   }
 
   .main__title {
@@ -376,8 +376,8 @@
   }
 
 .profile-rounded {
-  height: 100px;
-  width: 100px;
+/*  height: 100px;
+  width: 100px;*/
 }
 }
 

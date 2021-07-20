@@ -233,6 +233,19 @@
 
 @media screen and (max-width: 800px) {
 
+  .modal__close {
+    font-size: 10px;
+  }
+
+  .modal__content {
+    &__prev {
+      font-size: 10px;
+    }
+    &__next {
+      font-size: 10px;
+    }
+  }
+
   #profile-header {
     width: 100%;
   }
@@ -266,7 +279,7 @@
     }
 
     & .modal__content {
-      width: 80%;
+      width: 100%;
 
       &__title {
         margin-top: 20px;

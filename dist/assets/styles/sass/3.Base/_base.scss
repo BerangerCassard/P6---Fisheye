@@ -1,0 +1,19 @@
+::-webkit-scrollbar-thumb {
+  width: 12px;
+  border-radius: 5px;
+  background-color: #FAFAFA;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #901C1C;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-button {
+  color: white;
+}
+
+#price {
+  display: none;
+}

@@ -165,6 +165,7 @@ export const getData = fetch(dataFile)
                 console.log('firstName', (document.getElementById('first') as HTMLInputElement).value);
                 console.log('lastName', (document.getElementById('last') as HTMLInputElement).value);
                 console.log('mail', (document.getElementById('mail') as HTMLInputElement).value);
+                body.style.overflow = "revert";
                 contact.focus()
             })
 

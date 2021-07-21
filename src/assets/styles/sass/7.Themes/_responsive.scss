@@ -12,14 +12,14 @@
   width: 77%;
 
   &__nav {
-    width: 100%;
-    justify-content: left;
+    width: 63%;
+    //justify-content: left;
     //margin-top: 25px;
 
     & ul {
       padding-left: 0;
       //margin: auto;
-      width: 70%;
+      width: 86%;
       display: flex;
       justify-content: left;
     }
@@ -42,10 +42,10 @@
 
 @media screen and (max-width: 1520px) {
   .header-home {
-    flex-direction: column;
+    flex-direction: row;
 
     &__nav {
-      margin-top: 25px;
+      //margin-top: 25px;
       justify-content: center;
 
       & ul {

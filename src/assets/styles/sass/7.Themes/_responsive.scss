@@ -268,6 +268,11 @@
 
 @media screen and (max-width: 870px) {
 
+  #profile-picture {
+    width: 200px;
+    height: 200px;
+  }
+
   .modal__close {
     top: 28px;
     font-size: 10px;
@@ -394,7 +399,8 @@
 @media screen and (max-width: 439px) {
 
   #profile-picture {
-    height: 173px;
+    height: 150px;
+
   }
 
 .modal--contact__content {

@@ -29,7 +29,7 @@ export const getData = fetch(dataFile)
         const modal = document.getElementById('open-modal');
         const contact = document.getElementById('contact-photographer');
         const contactButtons = document.getElementsByClassName('contact');
-        const firstName = document.getElementById('first');
+        const lastName = document.getElementById('last');
         const mediaViewer = document.getElementById('media-viewer');
         const body = document.getElementById('body');
         let clickedMedia
@@ -141,7 +141,7 @@ export const getData = fetch(dataFile)
             function enableContactEventListener () {
                 Array.from(contactButtons).forEach(button => button.addEventListener('click', () => {
                     modal.style.display = 'block';
-                    firstName.focus();
+                    lastName.focus();
                     body.style.overflow = 'hidden';
                     document.addEventListener('keydown', enableModalKeyClose)
                 }))
@@ -162,7 +162,7 @@ export const getData = fetch(dataFile)
             validateModal.addEventListener('click', (event) => {
                 modal.style.display = "none";
                 event.preventDefault();
-                console.log('firstName', (document.getElementById('first') as HTMLInputElement).value);
+                console.log('lastName', (document.getElementById('first') as HTMLInputElement).value);
                 console.log('lastName', (document.getElementById('last') as HTMLInputElement).value);
                 console.log('mail', (document.getElementById('mail') as HTMLInputElement).value);
                 body.style.overflow = "revert";
